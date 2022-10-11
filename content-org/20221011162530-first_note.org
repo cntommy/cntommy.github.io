@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       3130DD0C-EE52-47C7-A025-A781B5E32067
+:END:
+#+TITLE: first-note
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-11 二 16:25]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+

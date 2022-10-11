@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       F8B70B1B-7DAE-4E17-BD13-FE2706FDAEC4
+:END:
+#+TITLE: 从零开始使用emacs
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-11 二 16:37]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+

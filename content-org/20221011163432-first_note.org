@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       5A98FAC4-0D5A-4223-ACF8-A1AC414B8209
+:END:
+#+TITLE: first-note
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-11 二 16:34]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+
