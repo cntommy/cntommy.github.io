@@ -325,9 +325,11 @@ touch init.el   #创建配置文件
   #+begin_src
     M-x org-roam-db-sync
   #+end_src
+  除此之外还有别的同步方案：https://emacs-china.org/t/org-files-git/19461
 - 折叠代码块
 - 代码块自动生成
   需要在init文件中加入(require 'org-tempo)
+- all-the-icons字体
 * Footnotes
 
 [fn:footprint1] https://blog.csdn.net/itguangit/article/details/122192858
