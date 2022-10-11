@@ -321,7 +321,13 @@ touch init.el   #创建配置文件
 - 截图、插入图片并显示
 - hugo生成博客
 - 自动保存上传git，自动下拉
+  尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：
+  #+begin_src
+    M-x org-roam-db-sync
+  #+end_src
 - 折叠代码块
+- 代码块自动生成
+  需要在init文件中加入(require 'org-tempo)
 * Footnotes
 
 [fn:footprint1] https://blog.csdn.net/itguangit/article/details/122192858
