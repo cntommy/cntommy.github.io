@@ -6,4 +6,29 @@
 #+DATE: [2022-10-11 二 16:34]
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: notes
+[[id:F8B70B1B-7DAE-4E17-BD13-FE2706FDAEC4][从零开始使用emacs]]
+* 这是一个headline
+:PROPERTIES:
+:ID:       38036301-9DAC-4E5E-96BE-E97B306F7055
+:END:
+headline 下面的子标题
+** 呵呵
+发动机是否减肥的
++ 什么是列表
+  - zh
+    * jddif
 
+
+jdididiii
+1. dfij
+2. *dnfjf*
+ 
+* 哈哈哈
+#+BEGIN_QUOTE
+AJZJIAJ
+#+END_QUOTE
+
+#+begin_src python
+print("hello emacs")
+pri
+#+end_src
