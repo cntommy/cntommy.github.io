@@ -180,6 +180,12 @@
 ;;(setq dashboard-set-file-icons t)
 ;;(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
+;; 目录树
+(package-install 'neotree)
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
 (setq my/all-notes "~/notes/")
 
 (require 'org-tempo)
@@ -247,3 +253,26 @@
 (use-package org-superstar
   :hook
   (org-mode . (lambda () (org-superstar-mode 1))))
+
+;; 图片管理
+(package-install 'org-download)
+(use-package org-download
+  :ensure t
+  :config
+  ;; Drag-and-drop to `dired`
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (require 'org-download)
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "~/notes/images")
+  (org-download-heading-lvl nil)
+  (org-download-timestamp "%Y%m%d-%H%M%S_")
+  (org-image-actual-width 300)
+  (org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
+;;  (org-download-screenshot-method "screencapture -i %s")
+  :bind
+  ("C-M-y" . org-download-screenshot))
+
+(setq org-image-actual-width (/ (display-pixel-width) 3))
+;; 将图片显示大小固定位屏幕宽度的三分之一
+(setq-default org-download-image-dir "~/notes/images")

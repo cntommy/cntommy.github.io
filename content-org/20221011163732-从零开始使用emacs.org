@@ -306,21 +306,100 @@ touch init.el   #创建配置文件
   :hook
   (org-mode . (lambda () (org-superstar-mode 1))))
 #+end_src
-中间有一些设置因为报错先注释掉了，准备之后有时间再慢慢调教，当务之急还是先学习做笔记的功能，增加完上述代码之后再次执行M-x eval-buffer就能开始愉快的做笔记啦！
+中间有一些设置因为报错先注释掉了，准备之后有时间再慢慢调教，当务之急还是先学习做笔记的功能，增加完上述代码之后再次执行
+#+begin_src 
+M-x eval-buffer
+#+end_src
+然后安装一下all-the-icons的字体
+#+begin_src 
+M-x all-the-icons-install-fonts
+#+end_src
+就能开始愉快的做笔记啦！
 
 主要参考了以下几篇教程：
 [[https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-工欲善其事_必先利其器_emacs_配置篇/#fn:1][emacs配置]]
 [[fn:footprint1][脚注1]]
 * 常用功能
-我的需求是用来做科研笔记，同时可能记录一些日常
+我的需求是用来做科研笔记，同时可能记录一些日常，接下来从软件的界面到功能进行记录：
+- 软件界面及相关术语
+  | 术语       | 解释                          |
+  |------------+-------------------------------|
+  | buffer     | 缓冲，完成编辑操作的区域      |
+  | frame      | 用了感觉是新的窗口的意思      |
+  | window     | 特定frame下的子窗口，可以嵌套 |
+  | minibuffer | 底部输入指令的区域                     |
+- window&frame操作
+  #+begin_src
+    全屏当前frame？
+    C-x o   切换window   C-x 5 o   切换frame
+    C-x 0   删除当前window   C-x 5 0   删除当前frame
+    C-x 1   只保留当前window   C-x 5 1   只保留当前frame
+    C-x 2   上下分裂window   C-x 5 2   分裂frame
+    C-x 3   左右分裂window
 
+    C-x C-b   列出所有的buffer
+    C-x C-c   退出emacs（不保留没关联的buffer？）
+
+  #+end_src
+- 编辑操作
+  #+begin_src
+    C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
+    C-@   标记选择
+    C-w   剪切
+    M-w   复制
+    C-y   粘贴   M-y   替换粘贴内容为更早的kill
+    C-/   撤销
+    M-x replace-s<RET>before<RET>after<RET>   替换光标后的所有字符串
+    M-x xxx-mode   切换为xxx major/minor mode
+    C-s   查找   全局查找？
+
+  #+end_src
+- 目录&文件操作
+  #+begin_src
+    M-S-d   浏览特定目录
+    C-x C-f   打开文件
+    C-x C-s   保存文件
+    C-x s   询问每个和file关联的buffer要不要保存
+    M-x recover-this-file<RET>   恢复文件   M-x recover-file<RET>filename<RET>
+
+  #+end_src
 主要参考了以下博客：
 [[http://www.langdebuqing.com/emacs%20notebook/org-mode%20表格.html][表格功能]]
 [[https://www.zmonster.me/2015/07/12/org-mode-introduction.html][org-mode]]
 * 待实现的需求
-- 截图、插入图片并显示
+- 截图、插入图片并显示[fn:pic1][fn:pic2]
+  首先在init中配置org-download，就能实现C-M-y快捷键截图插入，同时保存在"~/notes/images"目录下
+#+begin_src
+;; 图片管理
+(package-install 'org-download)
+(use-package org-download
+  :ensure t
+  :config
+  ;; Drag-and-drop to `dired`
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (require 'org-download)
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "~/notes/images")
+  (org-download-heading-lvl nil)
+  (org-download-timestamp "%Y%m%d-%H%M%S_")
+  (org-image-actual-width 300)
+  (org-download-screenshot-method "screencapture -i %s")
+  :bind
+  ("C-M-y" . org-download-screenshot))
+
+(setq-default org-download-image-dir "~/notes/images")
+#+end_src
+但是还不能实现将剪贴板中已有的图片插入到文本中，之后再研究一下
+图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图
+ 
+#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-12 19:05:26
+[[file:../images/screenshot20221012-190526_.png] 
+#+DOWNLOADED: file:/Users/didi/Desktop/截屏2022-05-27 16.30.02.png @ 2022-10-12 19:45:28
+[[file:../images/截屏2022-05-27 16.30.0220221012-194528_.png]]
+
 - hugo生成博客
-- 自动保存上传git，自动下拉
+- 自动保存上传git，自动下拉,syncthing同步
   尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：
   #+begin_src
     M-x org-roam-db-sync
@@ -329,7 +408,50 @@ touch init.el   #创建配置文件
 - 折叠代码块
 - 代码块自动生成
   需要在init文件中加入(require 'org-tempo)
-- all-the-icons字体
+- 随意移动
+  #+begin_src
+    C-f   后一个字符
+    C-b   前一个字符
+    M-f   后一个单词
+    M-b   前一个单词
+    C-n   下一行
+    C-p   上一行
+
+    C-a   行开头
+    C-e   行结尾
+    M-a   句子开头
+    M-e   句子结尾，这两个命令对上下移动比较快速
+
+    直接跳到下一行输入
+    M-g g   根据行号跳转
+  #+end_src
+- backlink
+- 导出pdf
+- 文献管理
+  https://zhuanlan.zhihu.com/p/526795352?utm_id=0
+- 公式
+  https://zhuanlan.zhihu.com/p/526795352?utm_id=0
+- 目录树
+  #+begin_src
+;; 目录树
+(package-install 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+  #+end_src
+  #+begin_src
+    U   进入上一级目录
+    g   刷新
+    C-c C-n   创建目录或文件
+    C-c C-d   删除目录或文件
+    C-c C-r   重命名目录或文件
+
+  #+end_src
+- rss
+  elfeed
 * Footnotes
 
+
+
+
+[fn:pic1]  https://github.com/abo-abo/org-download/issues/95
+[fn:pic2]  https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/  
 [fn:footprint1] https://blog.csdn.net/itguangit/article/details/122192858
