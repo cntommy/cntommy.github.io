@@ -1,3 +1,6 @@
+;; 窗口最大化
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; 系统共享剪切板
 ;; see also:
 ;;   https://www.emacswiki.org/emacs/CopyAndPaste
@@ -276,3 +279,6 @@
 (setq org-image-actual-width (/ (display-pixel-width) 3))
 ;; 将图片显示大小固定位屏幕宽度的三分之一
 (setq-default org-download-image-dir "~/notes/images")
+
+;; 文献管理
+(package-install 'zotxt)

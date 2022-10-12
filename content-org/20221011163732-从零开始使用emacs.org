@@ -28,8 +28,15 @@ rm -rf .emacs   #如果手动修改过emacs的配置可能会产生这个文件�
 cd ~/.emacs.d
 touch init.el   #创建配置文件
 #+end_src
-接着打开emacs，输入C-x C-f，会等待输入打开的文件，输入~/.emacs.d/init.el <RET>，再把下面的配置代码粘贴到文件中
+接着打开emacs，输入C-x C-f，会等待输入打开的文件，输入~/.emacs.d/init.el <RET>，输入命令刷新安装包列表
 #+begin_src 
+M-x package-refresh-contents
+#+end_src
+再把下面的配置代码粘贴到文件中
+#+begin_src
+;; 窗口最大化
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; 系统共享剪切板
 ;; see also:
 ;;   https://www.emacswiki.org/emacs/CopyAndPaste
@@ -317,7 +324,7 @@ M-x all-the-icons-install-fonts
 就能开始愉快的做笔记啦！
 
 主要参考了以下几篇教程：
-[[https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-工欲善其事_必先利其器_emacs_配置篇/#fn:1][emacs配置]]
+[[https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-工欲善其事_必先利其器_emacs_配置篇/][emacs配置]]
 [[fn:footprint1][脚注1]]
 * 常用功能
 我的需求是用来做科研笔记，同时可能记录一些日常，接下来从软件的界面到功能进行记录：
@@ -363,6 +370,17 @@ M-x all-the-icons-install-fonts
     M-x recover-this-file<RET>   恢复文件   M-x recover-file<RET>filename<RET>
 
   #+end_src
+- node相关操作
+  #+begin_src
+    C-c n f   查找/新建node
+    C-c n i   在buffer中插入node
+    C-c C-c   确认
+    C-c C-k   取消
+    C-c C-o   跳转到光标所在node
+    C-c C-.   返回到之前的node
+    C-c n l   调出backlink
+
+  #+end_src
 主要参考了以下博客：
 [[http://www.langdebuqing.com/emacs%20notebook/org-mode%20表格.html][表格功能]]
 [[https://www.zmonster.me/2015/07/12/org-mode-introduction.html][org-mode]]
@@ -393,17 +411,13 @@ M-x all-the-icons-install-fonts
 但是还不能实现将剪贴板中已有的图片插入到文本中，之后再研究一下
 图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图
  
-#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-12 19:05:26
-[[file:../images/screenshot20221012-190526_.png] 
-#+DOWNLOADED: file:/Users/didi/Desktop/截屏2022-05-27 16.30.02.png @ 2022-10-12 19:45:28
-[[file:../images/截屏2022-05-27 16.30.0220221012-194528_.png]]
-
 - hugo生成博客
 - 自动保存上传git，自动下拉,syncthing同步
   尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：
   #+begin_src
     M-x org-roam-db-sync
   #+end_src
+  但是这种方法比较麻烦，适合低频率使用，于是选择syncthing作为日常的同步方案
   除此之外还有别的同步方案：https://emacs-china.org/t/org-files-git/19461
 - 折叠代码块
 - 代码块自动生成
@@ -428,7 +442,24 @@ M-x all-the-icons-install-fonts
 - backlink
 - 导出pdf
 - 文献管理
+  看了网上的推荐之后，决定试一试zotero+zotxt-emacs
+  首先给zotero安装zotxt插件，用于和emacs关联，同时给emacs安装zotxt，在init文件中添加
+  #+begin_src 
+;; 文献管理
+(package-install 'zotxt)
+  #+end_src
+  为了生成pdf时能自动生成引用编号，还需要给zotero安装 pandoc-zotxt.lua 和 Better BibTeX插件，常用的操作有下面这些
+  #+begin_src
+    C-c " i   检索zotero文献库，并插入条目
+    C-c " a   打开文献
+
+  #+end_src
+  [[zotero://select/items/1_U7ZEA832][Wang, Zihao, Fudong Wang, Haipeng Zhang, Minghui Yang, Shaosheng Cao, Zujie Wen和Zhe Zhang. 《`Could You Describe the Reason for the Transfer?’: A Reinforcement Learning Based Voice-Enabled Bot Protecting Customers from Financial Frauds》, 不详, 10.]]
+[[zotero://select/items/1_TS229HQ6][Thoppilan, Romal, Daniel De Freitas, Jamie Hall, Noam Shazeer, Apoorv Kulshreshtha, Heng-Tze Cheng, Alicia Jin, 等. 《LaMDA: Language Models for Dialog Applications》. arXiv, 2022年2月10日. http://arxiv.org/abs/2201.08239.]]
+
+  
   https://zhuanlan.zhihu.com/p/526795352?utm_id=0
+  https://zhuanlan.zhihu.com/p/351003732
 - 公式
   https://zhuanlan.zhihu.com/p/526795352?utm_id=0
 - 目录树
