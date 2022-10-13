@@ -227,6 +227,8 @@
    'org-babel-load-languages
    '((dot . t))))
 
+
+(setq org-roam-database-connector 'sqlite3)
 (use-package org-roam
   :ensure t
   :config

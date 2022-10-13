@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       D46A1353-3682-49B3-B1E1-C7663199842A
+:END:
+#+TITLE: 2022-dialogue-paper
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-13 四 14:40]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+
+[ACL 2019-2022] [NAACL 2019-2022] [COLING 2020-2022] [AAAI 2019-2022] [ICLR 2019-2022] [ICML 2019-2022]
+[EMNLP 2019-2021] 2022出结果的还没看到dialogue相关的
+[NIPS 2019-2021]
+
+
+
+* acl2022
+- dst相关
+Beyond the Granularity: Multi-Perspective Dialogue Collaborative Selection for Dialogue State Tracking 超出粒度：对话状态跟踪的多视角对话协同选择
+Continual Prompt Tuning for Dialog State Tracking
+Mismatch between Multi-turn Dialogue and its Evaluation Metric in Dialogue State Tracking 【DST中的多轮对话和评价指标之间的不匹配】
+Dynamic Schema Graph Fusion Network for Multi-Domain Dialogue State Tracking
+GlobalWoZ: Globalizing MultiWoZ to Develop Multilingual Task-Oriented Dialogue Systems
+- 意图
+KNN-Contrastive Learning for Out-of-Domain Intent Classification【意图识别】
+- 医疗场景
+The AI Doctor Is In: A Survey of Task-Oriented Dialogue Systems for Healthcare Applications 【任务型对话应用在医疗领域】
+...
+
+[ICASSP 2019-2022] [IJCAI 2019-2022] [KDD 2019-2022] [INTERSPEECH 2019-2021] 
+* aaai2022
+- fusing mode
+  [[zotero://select/items/1_FJAGYLA6][Young, Tom, Frank Xing, Vlad Pandelea, Jinjie Ni和Erik Cambria. 《Fusing Task-Oriented and Open-Domain Dialogues in Conversational Agents》. Proceedings of the AAAI Conference on Artificial Intelligence 36, 期 10 (2022年6月28日): 11622–29. https://doi.org/10.1609/aaai.v36i10.21416.]]

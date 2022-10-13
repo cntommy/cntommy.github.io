@@ -350,6 +350,8 @@ M-x all-the-icons-install-fonts
   #+end_src
 - 编辑操作
   #+begin_src
+    M-e   移动到句尾
+    C-c C-x C-n   移动到下一个链接
     C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
     C-@   标记选择
     C-w   剪切
@@ -359,6 +361,8 @@ M-x all-the-icons-install-fonts
     M-x replace-s<RET>before<RET>after<RET>   替换光标后的所有字符串
     M-x xxx-mode   切换为xxx major/minor mode
     C-s   查找   全局查找？
+    C-x n s   聚焦当前字内容
+    C-x n w   退出聚焦
 
   #+end_src
 - 目录&文件操作
@@ -384,6 +388,14 @@ M-x all-the-icons-install-fonts
 主要参考了以下博客：
 [[http://www.langdebuqing.com/emacs%20notebook/org-mode%20表格.html][表格功能]]
 [[https://www.zmonster.me/2015/07/12/org-mode-introduction.html][org-mode]]
+* 其他优化
+- cpu占用高
+  #+begin_src
+(setq history-length 100)
+(put 'minibuffer-history 'history-length 50)
+(put 'evil-ex-history 'history-length 50)
+(put 'kill-ring 'history-length 25)
+  #+end_src
 * 待实现的需求
 - 截图、插入图片并显示[fn:pic1][fn:pic2]
   首先在init中配置org-download，就能实现C-M-y快捷键截图插入，同时保存在"~/notes/images"目录下
@@ -412,6 +424,7 @@ M-x all-the-icons-install-fonts
 图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图
  
 - hugo生成博客
+  http://holbrook.github.io/2012/04/12/emacs_orgmode_editor.html
 - 自动保存上传git，自动下拉,syncthing同步
   尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：
   #+begin_src
@@ -448,16 +461,18 @@ M-x all-the-icons-install-fonts
 ;; 文献管理
 (package-install 'zotxt)
   #+end_src
+  然后让init文件生效，同时打开zotxt的minor mode
+  #+begin_src
+    M-x eval-buffer
+    M-x org-zotxt-mode
+  #+end_src
   为了生成pdf时能自动生成引用编号，还需要给zotero安装 pandoc-zotxt.lua 和 Better BibTeX插件，常用的操作有下面这些
   #+begin_src
     C-c " i   检索zotero文献库，并插入条目
     C-c " a   打开文献
-
+    C-c " u   从zotero库更新当前连接
   #+end_src
-  [[zotero://select/items/1_U7ZEA832][Wang, Zihao, Fudong Wang, Haipeng Zhang, Minghui Yang, Shaosheng Cao, Zujie Wen和Zhe Zhang. 《`Could You Describe the Reason for the Transfer?’: A Reinforcement Learning Based Voice-Enabled Bot Protecting Customers from Financial Frauds》, 不详, 10.]]
-[[zotero://select/items/1_TS229HQ6][Thoppilan, Romal, Daniel De Freitas, Jamie Hall, Noam Shazeer, Apoorv Kulshreshtha, Heng-Tze Cheng, Alicia Jin, 等. 《LaMDA: Language Models for Dialog Applications》. arXiv, 2022年2月10日. http://arxiv.org/abs/2201.08239.]]
-
-  
+    
   https://zhuanlan.zhihu.com/p/526795352?utm_id=0
   https://zhuanlan.zhihu.com/p/351003732
 - 公式
@@ -474,15 +489,19 @@ M-x all-the-icons-install-fonts
     C-c C-n   创建目录或文件
     C-c C-d   删除目录或文件
     C-c C-r   重命名目录或文件
-
   #+end_src
 - rss
   elfeed
+- 全局搜索
+  https://emacs-china.org/t/topic/5618
 * Footnotes
-
-
-
-
 [fn:pic1]  https://github.com/abo-abo/org-download/issues/95
 [fn:pic2]  https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/  
 [fn:footprint1] https://blog.csdn.net/itguangit/article/details/122192858
+* 其他参考链接
+buffer http://incf19.com/yynotes/posts/2022-03-17-18-buffer管理和ibuffer的介绍与使用/index.html#org1ef9b10
+emacslisp https://kangxiaoning.github.io/post/2021/02/learn-emacs-lisp-part-1/
+Org-roam User Manual https://www.orgroam.com/manual.html#C-Compiler
+链接 https://blog.csdn.net/wait_for_eva/article/details/113870853
+emacs china https://emacs-china.org
+org-roam discourse https://org-roam.discourse.group
