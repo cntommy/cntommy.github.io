@@ -1,8 +1,8 @@
-baseURL = "http://example.org"
-title = "Hugo Zdoc Theme"
+baseURL = "http://cntommy.github.io/"
+title = "高乐高的沙子堆"
 theme = "zdoc"
 
-defaultContentLanguage = "en"
+defaultContentLanguage = "ch"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = false
 

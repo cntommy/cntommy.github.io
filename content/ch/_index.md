@@ -1,5 +1,5 @@
 ---
-title: Z Themes
+title: 首页
 description: Hugo zzo, zdoc theme documentation home page
 date: 2020-01-26T04:15:05+09:00
 draft: false
@@ -8,15 +8,15 @@ landing:
   height: 500
   image: favicon/android-icon-192x192.png
   title:
-    - Z Themes
+    - 高乐高的沙子堆
   text:
-    - This is Hugo Z Themes documentation site
+    - 积少成多，聚沙成塔
   titleColor:
   textColor:
   spaceBetweenTitleText: 25
   buttons:
     - link: docs
-      text: HUGO THEME ZDOC
+      text: 阅读文章
       color: primary
   # backgroundImage: 
   #   src: images/landscape.jpg
@@ -58,23 +58,23 @@ footer:
     applySinglePageCss: false
     markdown:
       |
-      ## Zzo docs
+      ## cntommy
       Copyright © 2020. All rights reserved.
 
 sections:
   - bgcolor: teal
     type: card
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue. Suspendisse semper laoreet tortor sed convallis. Nulla ac euismod lorem"
+    description: "先给以后想做的东西占个坑"
     header: 
-      title: Why Zdoc
+      title: 建设中ing
       hlcolor: "#8bc34a"
       color: '#fff'
       fontSize: 32
       width: 220
     cards:
-      - subtitle: Performance
+      - subtitle: 科研笔记
         subtitlePosition: center
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue."
+        description: "记录科研过程的问题"
         image: images/section/keyboard.png
         color: white
         button: 
@@ -84,9 +84,9 @@ sections:
           target: _blank
           color: 'white'
           bgcolor: '#283593'
-      - subtitle: Reliability
+      - subtitle: 技术相关
         subtitlePosition: center
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue. Suspendisse semper laoreet tortor sed convallis. Nulla ac euismod lorem"
+        description: "记录代码中碰到的问题"
         image: images/section/processor.png
         color: white
         button: 
@@ -96,9 +96,9 @@ sections:
           target: _blank
           color: 'white'
           bgcolor: '#283593'
-      - subtitle: Productivity
+      - subtitle: 日常
         subtitlePosition: center
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue. Suspendisse semper laoreet tortor sed convallis. Nulla ac euismod lorem"
+        description: "记录日常的一些思考"
         image: images/section/root-server.png
         color: white
         button: 
@@ -110,17 +110,17 @@ sections:
           bgcolor: '#283593'
   - bgcolor: DarkSlateBlue
     type: normal
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue. Suspendisse semper laoreet tortor sed convallis. Nulla ac euismod lorem"
+    description: "记录一些自己的爱好"
     header:
-      title: Build it with Zdoc
+      title: 建设中
       hlcolor: DarkKhaki
       color: "#fff"
       fontSize: 32
       width: 340
     body:
-      subtitle: Extensible and customizable.
+      subtitle: 摩托 滑雪
       subtitlePosition: left
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id eleifend erat. Integer eget mattis augue. Suspendisse semper laoreet tortor sed convallis. Nulla ac euismod lorem"
+      description: "记录一些爱好相关"
       color: white
       image: images/section/root-server.png
       imagePosition: left
