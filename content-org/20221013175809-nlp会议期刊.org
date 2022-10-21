@@ -8,15 +8,25 @@
 #+HUGO_SECTION: notes
 
 会议
-A类： _ACL_   信息领域：SIGIR, WWW   人工智能领域：AAAI, IJCAI   机器学习领域：NIPS
-B类： _EMNLP_, _COLING（ICCL)_, ICASSP
-C类：CONNL, _NAACL_, NLPCC, InterSpeech   信息领域：WSDM
-ICLR EACL ICML ICMLA
+A类： _ACL_   信息领域：SIGIR, WWW   人工智能领域：AAAI, IJCAI   机器学习领域：NIPS, ICML
+B类： _EMNLP_, COLING, ICASSP
+C类：CONLL, _NAACL_, NLPCC, InterSpeech   信息领域：WSDM
+
 期刊
 A类：
 B类：IEEE/ACM Transactions on Audio Speech and Language Processing（TASLP), TAC
 C类：Frontiers of Computer Science, KBS, NC, NLE
 
+影响力
+1. acl icml nips iclr
+2. naacl emnlp
+3. eacl aaai ijcai
+4. coling aacl
+5. ijcnlp nlpcc ccl ccmt
+   
+   conll
+   
+
 参考链接：
 https://zhuanlan.zhihu.com/p/371282122
-
+https://www.zhihu.com/question/424723599/answer/1524450546

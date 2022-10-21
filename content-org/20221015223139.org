@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       B19A8F5D-FFFA-41CC-B166-2C261B5ABCB4
+:END:
+#+TITLE: daily
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-15 六 22:31]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+
+* TODO 买猫粮
+DEADLINE: <2022-10-29 六>
+* 买京东
+* TODO [#A] 房子出租
+DEADLINE: <2022-10-24 一>
+** 找到之前的帖子
+** 找到租客
+- [X] 发公司群
+- [X] 发豆瓣
+** 把行李搬到公司
+SCHEDULED: <2022-10-22 六>
+* TODO [#C] 宿舍
+** 鼠标
+** 耳机
+** 转接头
+** usbc充电器
+* TODO 锻炼
+SCHEDULED: <2022-10-16 日 +1d>
+* TODO 还书
+** 自然语言处理
+* 寄东西
+** 抱枕
+* 公司
+** make up attendence
+** 拖鞋

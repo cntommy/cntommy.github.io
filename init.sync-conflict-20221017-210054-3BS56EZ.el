@@ -1,7 +1,3 @@
-;;设置代理
-;;(setq url-proxy-services '(("http" . "http://127.0.0.1:1087")))
-;;(setq url-proxy-services '(("https" . "http://127.0.0.1:1087")))
-
 ;; 窗口最大化
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -147,8 +143,9 @@
 
 ;; 设置源
 (require 'package)
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+'("melpa-stable" . "https://stable.melpa.org/packages/"))
+
 (use-package all-the-icons :ensure t)
 
 (use-package doom-themes
@@ -175,10 +172,7 @@
   :ensure t
   :hook (after-init . doom-modeline-mode))
 
-(package-install 'nyan-mode)
-(use-package nyan-mode
-  :init
-  (nyan-mode 1))
+;; (use-package nyan-mode)
 
 (use-package dashboard
   :ensure t
@@ -266,11 +260,6 @@
   :hook
   (org-mode . (lambda () (org-superstar-mode 1))))
 
-(use-package ox-hugo
-  :ensure t   ;Auto-install the package from Melpa
-  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
-  :after ox)
-
 ;; 图片管理
 (package-install 'org-download)
 (use-package org-download
@@ -284,11 +273,15 @@
   (org-download-image-dir "~/notes/images")
   (org-download-heading-lvl nil)
   (org-download-timestamp "%Y%m%d-%H%M%S_")
-  ;; 将图片显示大小固定位屏幕宽度的三分之一  
-  (org-image-actual-width (/ (display-pixel-width) 3))
-    (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+  (org-image-actual-width 300)
+  (org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
+;;  (org-download-screenshot-method "screencapture -i %s")
   :bind
   ("C-M-y" . org-download-screenshot))
+
+(setq org-image-actual-width (/ (display-pixel-width) 3))
+;; 将图片显示大小固定位屏幕宽度的三分之一
+(setq-default org-download-image-dir "~/notes/images")
 
 ;; 文献管理
 (package-install 'zotxt)
@@ -311,11 +304,10 @@
 ;; 改变任务状态关键词
 (setq org-todo-keywords
   '((sequence "TODO(t)" "ONGOING(o)" "MAYBE(m)" "WAIT(w)" "DELEGATED(d)" "|"
-      "DONE(f)" "CANCELLED(c)" "STUCK(s)")))
+      "DONE(f!)" "CANCELLED(c)" "STUCK(s)")))
 
 ;; 配置全局任务文件清单和快捷键
-(setq org-agenda-files (list "~/notes/content-org/"
-               ))
+(setq org-agenda-files (list "~/notes/content-org/"))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -374,172 +366,5 @@
           ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
            (org-agenda-overriding-header "Inbox items: "))
           "~/notes/content-org/org-html-exports/Inbox-All.html")
+         
         ))
-
-;; elfeed for rss
-(package-install 'elfeed)
-;;(setq elfeed-feeds '("http://feeds.feedburner.com/zhihu-daily"))
-(use-package elfeed
-    :ensure t
-    :config
-    (setq elfeed-db-directory (expand-file-name ".emacs.d/elfeed" user-emacs-directory) )
-    ;(setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory) elfeed-show-entry-switch 'display-buffer)
-    (setf url-queue-timeout 30)
-    (setq  elfeed-feeds
-;;(defvar elfeed-feeds-alist
-  '(("https://www.zhihu.com/rss" info)
-    ;("http://feeds.feedburner.com/zhihu-daily" news)
-    ("https://planet.emacslife.com/atom.xml" emacs blogs)
-    ("https://www.reddit.com/r/emacs.rss" blogs emacs)
-    ("https://www.reddit.com/r/orgmode.rss" emacs blogs)
-    ("https://rsshub.app/rsshub/rss" rss blogs)
-    ("https://www.kexue.fm/feed" blogs)
-    ("https://rsshub.app/zhihu/daily" info)
-    ("https://api.feeddd.org/feeds/626fcecea4ca6e10e37dcbf1" blogs)   ;; 李rumor
-    ("https://api.feeddd.org/feeds/61aa18e9486e3727fb090b4d" research)
-    ("https://api.feeddd.org/feeds/613381fa1269c358aa0eadd9" blogs)   ;; NewBeeNLP
-    ("https://api.feeddd.org/feeds/6110783449ef7514d0b91ae1" info)   ;;  差评
-    ("https://api.feeddd.org/feeds/61aa18e9486e3727fb090ba1" info)   ;;  新智元
-    ("https://api.feeddd.org/feeds/61aa18e9486e3727fb090ba9" info)   ;;  智源社区
-    ("https://api.feeddd.org/feeds/61aa18e9486e3727fb090b97" info)   ;;  微软研究院AI头条
-    ("http://arxiv.org/rss/cs.CL?mirror=cn" research)   ;; arxiv nlp
-    ("https://rsshub.app/coronavirus/dxy")  ;; ncov
-
-
-    ))
-    :bind
-    ("C-x w" . elfeed ))
-
-;;(package-install 'elfeed-org)
-;; Load elfeed-org
-;;(require 'elfeed-org)
-
-;; Initialize elfeed-org
-;; This hooks up elfeed-org to read the configuration when elfeed
-;; is started with =M-x elfeed=
-;;(elfeed-org)
-
-;; Optionally specify a number of files containing elfeed
-;; configuration. If not set then the location below is used.
-;; Note: The customize interface is also supported.
-;;(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
-(package-install 'elfeed-summary)
-(setq elfeed-summary-settings
-      '(
-       
-        (group (:title . "Blogs")
-               (:elements
-                (query . (and blogs (not emacs)))
-                (group (:title . "Emacs")
-                       (:elements
-                        (query . (and blogs emacs))))))
-        (group (:title . "Research")
-               (:elements
-                (query . research)))
-        (group (:title . "Information")
-               (:elements
-                (query . info)))
-        
-        (group (:title . "GitHub")
-               (:elements
-                (query . (url . "SqrtMinusOne.private.atom"))
-                ))
-        (group (:title . "Videos")
-               (:elements
-                (group
-                 (:title . "Music")
-                 (:elements
-                  (query . (and videos music))))
-                (group
-                 (:title . "Tech")
-                 (:elements
-                  (query . (and videos tech))))
-                
-                ;; ...
-                ))
-        ;; ...
-        (group (:title . "Miscellaneous")
-               (:elements
-                
-                (group
-                 (:title . "Ungrouped")
-                 (:elements :misc))))))
-
-;; 补全
-(package-install 'counsel)
-(use-package counsel
-  :custom
-  (counsel-find-file-at-point t)
-  :init
-  (counsel-mode +1)
-  :bind
-  ("C-x b" . counsel-switch-buffer)
-;;  ("C-c a p" . counsel-ag)
-  ("M-y" . counsel-yank-pop)
-  ("M-x" . counsel-M-x)
-  ("C-x C-f" . counsel-find-file)
-  ("<f1> f" . counsel-describe-function)
-  ("<f1> v" . counsel-describe-variable)
-  ("<f1> o" . counsel-describe-symbol)
-  ("<f1> l" . counsel-find-library)
-  ("<f2> i" . counsel-info-lookup-symbol)
-  ("<f2> u" . counsel-unicode-char)
-  ("C-c g" . counsel-git)
-  ;; ("C-c j" . counsel-git-grep)
-  ("C-c k" . counsel-ag)
-  ("C-x l" . counsel-locate)
-  ("C-S-o" . counsel-rhythmbox)
-  (:map minibuffer-local-map
-        (("C-r" . counsel-minibuffer-history))))
-
-(package-install 'ivy)
-(use-package ivy
-  :init
-  (ivy-mode 1)
-  :custom
-  (ivy-use-virtual-buffers t)
-  (enable-recursive-minibuffers t)
-  (ivy-wrap t)
-  :bind
-  ("\C-s" . swiper)
-  ("\C-r" . swiper-backward)
-  ("C-c C-r" . ivy-resume)
-  ("<f6>" . ivy-resume))
-
-(package-install 'ivy-posframe)
-(use-package ivy-posframe
-  :custom
-  (ivy-posframe-display-functions-alist
-   '((swiper          . ivy-posframe-display-at-point)  ;; swiper 紧随光标弹出
-     (complete-symbol . ivy-posframe-display-at-point)  ;; 符号补全紧随光标弹出
-     (t . ivy-posframe-display)))                       ;; 其他所有都在中心位置弹出
-  (ivy-posframe-parameters '((left-fringe . 8)
-                             (right-fringe . 8)))       ;; 指示弹出窗口标边缘
-  :init
-  (ivy-posframe-mode 1))
-
-;;(package-install 'ivy-rich)
-;;(use-package ivy-rich
-;;  :after (ivy)
-;;  :init
-;;  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-;;  (ivy-rich-mode +1)
-;;  (ivy-rich-project-root-cache-mode +1))
-
-;;(package-install 'all-the-icons-ivy-rich)
-;;(use-package all-the-icons-ivy-rich
-;;  :after (ivy-rich)
-;;  :init (all-the-icons-ivy-rich-mode 1))
-
-(package-install 'goto-line-preview)
-(use-package goto-line-preview
-  :bind (("M-g g" . goto-line-preview)))
-
-(package-install 'which-key)
-(use-package which-key
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration)
-  :custom
-  (which-key-show-early-on-C-h t)
-  :init
-  (which-key-mode))
