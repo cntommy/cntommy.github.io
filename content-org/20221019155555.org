@@ -5,7 +5,7 @@
 #+AUTHOR: Jun Gao
 #+DATE: [2022-10-19 三 15:55]
 #+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: notes
+#+HUGO_SECTION: ch/docs
 
 how to decide the value of a thing
 1. is it a correct thing?
