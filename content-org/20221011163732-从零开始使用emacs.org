@@ -345,7 +345,6 @@ M-x all-the-icons-install-fonts
 
     C-x C-b   列出所有的buffer
     C-x C-c   退出emacs（不保留没关联的buffer？）
-
   #+end_src
 - 帮助
   #+begin_src
