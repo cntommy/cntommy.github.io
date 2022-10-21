@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       832E4B98-5C93-4626-9CDF-C8E0D1CD98E5
+:END:
+#+TITLE: survey-rl-in-dialogue
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-19 三 17:34]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+[[zotero://select/items/1_27FLF3KC][[1] V. Uc-Cetina, N. Navarro-Guerrero, A. Martin-Gonzalez, C. Weber和S. Wermter, 《Survey on reinforcement learning for language processing》, Artif Intell Rev, 6月 2022, doi: 10.1007/s10462-022-10205-5.]]
+
+[[zotero://select/items/1_BD3M93QV][[1] W.-C. Kwan, H. Wang, H. Wang和K.-F. Wong, 《A Survey on Recent Advances and Challenges in Reinforcement Learning Methods for Task-Oriented Dialogue Policy Learning》. arXiv, 2022年7月10日. 见于: 2022年10月19日. [在线]. 载于: http://arxiv.org/abs/2202.13675]]
+
+[[zotero://select/items/1_SA76QZ4Z][[1] I. Graßl, 《A Survey on Reinforcement Learning for Dialogue Systems》, 页 6.]]

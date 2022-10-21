@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       F7B29D20-3EAE-4272-90B4-2ADB11629AFE
+:END:
+#+TITLE: fish-kinds
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-19 三 18:36]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+* 鲇形目
+** 黄颡鱼：黄辣丁,黄鸭叫
+** 鲢鱼：乌江鱼
+** 鲶鱼
+** 长吻鮠：江团
+** 巴沙鱼
+** 钳鱼：梭边鱼
+* 慈鲷目
+** 罗非鱼：非洲鲫鱼
+* 鲤形目
+** 草鱼
+** 鳙鱼：花鲢
+* 鲈形目
+** 黑鱼

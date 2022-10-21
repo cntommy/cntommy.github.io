@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       37A4AAB2-86A0-490B-A9C4-5057C83BCF53
+:END:
+#+TITLE: how to make notes
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-13 四 11:05]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+- 笔记软件
+  [[id:F8B70B1B-7DAE-4E17-BD13-FE2706FDAEC4][从零开始使用emacs]]
+- 做笔记的思路
+  zettelkasten卡片盒笔记法：https://www.zhihu.com/question/384309878/answer/1120682799

@@ -1,0 +1,86 @@
+:PROPERTIES:
+:ID:       D46A1353-3682-49B3-B1E1-C7663199842A
+:END:
+#+TITLE: 2022-dialogue-paper
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-13 四 14:40]
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: notes
+
+[ACL 2019-2022] [NAACL 2019-2022] [COLING 2020-2022] [AAAI 2019-2022] [ICLR 2019-2022] [ICML 2019-2022]
+[EMNLP 2019-2021] 2022出结果的还没看到dialogue相关的
+[NIPS 2019-2021]
+[ICASSP 2019-2022] [IJCAI 2019-2022] [KDD 2019-2022] [INTERSPEECH 2019-2021] 
+key word:
+- [ ] dialogue
+- [ ] dialog
+- [ ] conversation
+* ONGOING ACL 2022
+- dst相关
+Continual Prompt Tuning for Dialog State Tracking
+Dynamic Schema Graph Fusion Network for Multi-Domain Dialogue State Tracking
+GlobalWoZ: Globalizing MultiWoZ to Develop Multilingual Task-Oriented Dialogue Systems
+- 意图
+KNN-Contrastive Learning for Out-of-Domain Intent Classification【意图识别】
+- 医疗场景
+The AI Doctor Is In: A Survey of Task-Oriented Dialogue Systems for Healthcare Applications 【任务型对话应用在医疗领域】
+- rl
+  [[zotero://select/items/1_X693F4L2][[1] G. S. Ramachandran, K. Hashimoto和C. Xiong, 《[CASPI] Causal-aware Safe Policy Improvement for Task-oriented Dialogue》, 收入 Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Dublin, Ireland, 5月 2022, 页 92–102. doi: 10.18653/v1/2022.acl-long.8.]] [[id:C0A0F8B1-4D17-4C6C-9BB9-CB6429C821BF][caspi]]
+- interpretale
+  [[zotero://select/items/1_JEF243IH][[1] S. Yang, R. Zhang, S. Erfani和J. H. Lau, 《An Interpretable Neuro-Symbolic Reasoning Framework for Task-Oriented Dialogue Generation》, 收入 Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Dublin, Ireland, 5月 2022, 页 4918–4935. doi: 10.18653/v1/2022.acl-long.338.]]
+- TOD
+  [[zotero://select/items/1_IE5D4KLS][[1] Y. Su等, 《Multi-Task Pre-Training for Plug-and-Play Task-Oriented Dialogue System》, 收入 Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Dublin, Ireland, 5月 2022, 页 4661–4676. doi: 10.18653/v1/2022.acl-long.319.]]
+
+
+
+* TODO NAACL 2022
+- pretrain model
+  [[zotero://select/items/1_CVWEPRUP][[1] Z. Zhou等, 《Learning Dialogue Representations from Consecutive Utterances》, 收入 Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Seattle, United States, 7月 2022, 页 754–768. doi: 10.18653/v1/2022.naacl-main.55.]]
+- rl
+  [[zotero://select/items/1_7DZRRPBZ][[1] S. Verma, J. Fu, S. Yang和S. Levine, 《CHAI: A CHatbot AI for Task-Oriented Dialogue with Offline Reinforcement Learning》, 收入 Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Seattle, United States, 7月 2022, 页 4471–4491. doi: 10.18653/v1/2022.naacl-main.332.]] [[id:CEAC89F3-4D9F-4D46-99B0-C915F11975F6][chai]]
+  [[zotero://select/items/1_3466QBVQ][[1] P. Cai, H. Wan, F. Liu, M. Yu, H. Yu和S. Joshi, 《Learning as Conversation: Dialogue Systems Reinforced for Information Acquisition》, 收入 Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Seattle, United States, 7月 2022, 页 4781–4796. doi: 10.18653/v1/2022.naacl-main.352.]] [[id:015CB6E2-EC65-42B2-9B70-0B37A084960C][info_acq]]
+  [[zotero://select/items/1_IGZX58HZ][[1] C. Tian, W. Yin和M.-F. Moens, 《Anti-Overestimation Dialogue Policy Learning for Task-Completion Dialogue System》, 收入 Findings of the Association for Computational Linguistics: NAACL 2022, Seattle, United States, 7月 2022, 页 565–577. doi: 10.18653/v1/2022.findings-naacl.43.]] [[id:B95AE935-9792-457D-B05A-49A198906FE5][anti-over]]
+  [[zotero://select/items/1_4S782Q6M][[1] Y. Zhao, H. Qin, W. Zhenyu, C. Zhu和S. Wang, 《A Versatile Adaptive Curriculum Learning Framework for Task-oriented Dialogue Policy Learning》, 收入 Findings of the Association for Computational Linguistics: NAACL 2022, Seattle, United States, 7月 2022, 页 711–723. doi: 10.18653/v1/2022.findings-naacl.54.]] [[id:3589C112-5B80-4A31-A71F-F9DEE1A2C8F9][versa-adap]]
+
+- medical scene
+  [[zotero://select/items/1_X7EHRNY3][[1] D. F. Navarro, M. Dras和S. Berkovsky, 《Few-shot fine-tuning SOTA summarization models for medical dialogues》, 收入 Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies: Student Research Workshop, Hybrid: Seattle, Washington + Online, 7月 2022, 页 254–266. doi: 10.18653/v1/2022.naacl-srw.32.]]
+
+* TODO COLING 2022
+- reinforcement learning
+  [[zotero://select/items/1_NYQZCULP][[1] A. Ohashi和R. Higashinaka, 《Adaptive Natural Language Generation for Task-oriented Dialogue via Reinforcement Learning》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 242–252. 见于: 2022年10月17日. [在线]. 载于: https://aclanthology.org/2022.coling-1.19]]
+  [[zotero://select/items/1_85XTRJ6T][[1] C. Geishauser等, 《Dynamic Dialogue Policy for Continual Reinforcement Learning》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 266–284. 见于: 2022年10月17日. [在线]. 载于: https://aclanthology.org/2022.coling-1.21]] [[id:573245D9-B9D7-473D-9E7C-0D0E63C238C3][continue-rl]]
+- contrast learning
+  [[zotero://select/items/1_5KHAXNJT][[1] L. Poddar, P. Wang和J. Reinspach, 《DialAug: Mixing up Dialogue Contexts in Contrastive Learning for Robust Conversational Modeling》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 441–450. 见于: 2022年10月19日. [在线]. 载于: https://aclanthology.org/2022.coling-1.35]]
+- consistency identification
+  [[zotero://select/items/1_CR4W5FNP][[1] L. Qin等, 《CGIM: A Cycle Guided Interactive Learning Model for Consistency Identification in Task-oriented Dialogue》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 461–470. 见于: 2022年10月19日. [在线]. 载于: https://aclanthology.org/2022.coling-1.37]]
+- health scene
+  [[zotero://select/items/1_LB86CCTZ][[1] Y. Zhou等, 《Towards Enhancing Health Coaching Dialogue in Low-Resource Settings》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 694–706. 见于: 2022年10月19日. [在线]. 载于: https://aclanthology.org/2022.coling-1.58]]
+- intent discovery
+  [[zotero://select/items/1_MRAJ38ZZ][[1] Y. Mou等, 《Generalized Intent Discovery: Learning from Open World Dialogue System》, 收入 Proceedings of the 29th International Conference on Computational Linguistics, Gyeongju, Republic of Korea, 10月 2022, 页 707–720. 见于: 2022年10月19日. [在线]. 载于: https://aclanthology.org/2022.coling-1.59]]
+
+* TODO AAAI 2022
+- fusing mode
+  [[zotero://select/items/1_FJAGYLA6][Young, Tom, Frank Xing, Vlad Pandelea, Jinjie Ni和Erik Cambria. 《Fusing Task-Oriented and Open-Domain Dialogues in Conversational Agents》. Proceedings of the AAAI Conference on Artificial Intelligence 36, 期 10 (2022年6月28日): 11622–29. https://doi.org/10.1609/aaai.v36i10.21416.]]
+- dp
+  [[zotero://select/items/1_WGEMDUGD][[1] W. He等, 《GALAXY: A Generative Pre-trained Model for Task-Oriented Dialog with Semi-supervised Learning and Explicit Policy Injection》, Proceedings of the AAAI Conference on Artificial Intelligence, 卷 36, 期 10, Art. 期 10, 6月 2022, doi: 10.1609/aaai.v36i10.21320.]]
+  [[zotero://select/items/1_7KUEFZQW][[1] H. Zhang, Z. Zeng, K. Lu, K. Wu和S. Zhang, 《Efficient Dialog Policy Learning by Reasoning with Contextual Knowledge》, Proceedings of the AAAI Conference on Artificial Intelligence, 卷 36, 期 10, Art. 期 10, 6月 2022, doi: 10.1609/aaai.v36i10.21421.]]
+
+- plm
+  [[zotero://select/items/1_LCCFBHRB][[1] F. Mi, Y. Wang和Y. Li, 《CINS: Comprehensive Instruction for Few-Shot Learning in Task-Oriented Dialog Systems》, Proceedings of the AAAI Conference on Artificial Intelligence, 卷 36, 期 10, Art. 期 10, 6月 2022, doi: 10.1609/aaai.v36i10.21356.]]
+  
+* TODO ICLR 2022
+- rl
+  [[zotero://select/items/1_GQ5SG5IV][[1] Y. Jang, J. Lee和K.-E. Kim, 《GPT-CRITIC: OFFLINE REINFORCEMENT LEARNING FOR END-TO-END TASK-ORIENTED DIALOGUE SYS-》, 页 16, 2022.]] [[id:3D17551D-B5FB-479E-ADE9-3AA1C25092AB][gpt-critic]]
+* TODO IJCAI
+
+* TODO ICML 2022
+- rl
+  [[zotero://select/items/1_IUKACNSI][[1] I.-J. Liu, X. Yuan, M.-A. Côté, P.-Y. Oudeyer和A. G. Schwing, 《Asking for Knowledge: Training RL Agents to Query External Knowledge Using Language》. arXiv, 2022年7月3日. doi: 10.48550/arXiv.2205.06111.]]
+
+* WAIT EMNLP 2022
+* WAIT NIPS 2022
+* TODO ICASSP 2022
+- dp
+  [[zotero://select/items/1_6EC8XLYU][[1] H. Wang, H. Wang, Z. Wang和K.-F. Wong, 《Integrating Pretrained Language Model for Dialogue Policy Evaluation》, 收入 ICASSP 2022 - 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 5月 2022, 页 6692–6696. doi: 10.1109/ICASSP43922.2022.9747593.]]
+- intent classify
+  [[zotero://select/items/1_VA8HSCX7][[1] J. Xu, P. Huang, Y. Peng, J. Ding, B. Huang和S. Huang, 《Adjacency Pairs-Aware Hierarchical Attention Networks for Dialogue Intent Classification》, 收入 ICASSP 2022 - 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 5月 2022, 页 7622–7626. doi: 10.1109/ICASSP43922.2022.9746537.]]
