@@ -258,8 +258,8 @@
                                                     "#+TITLE: ${title}
 #+AUTHOR: Jun Gao
 #+DATE: %U
-#+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: notes
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
 ")))))
 
 (use-package org-superstar

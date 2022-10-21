@@ -4,10 +4,15 @@
 #+TITLE: 从零开始使用emacs
 #+AUTHOR: Jun Gao
 #+DATE: [2022-10-11 二 16:37]
-#+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: notes
-接触emacs是因为在一次组会上听到付老师用它作为科研笔记和文献管理的工具，由于其双链的功能和对latex的支持非常适合梳理一些杂乱的思路和生成论文，因此想学习一下，虽然传言学习曲线非常陡峭。（此处想插一个图，但是我还不会）。本笔记的目的是记录刚开始使用emacs的一些坑和常用功能：
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
 * 为什么选择emacs
+接触emacs是因为在一次组会上听到付老师用它作为科研笔记和文献管理的工具，由于其双链的功能和对latex的支持非常适合梳理一些杂乱的思路和生成论文，因此想学习一下，虽然传言学习曲线非常陡峭。
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 20:06:06
+[[file:../images/screenshot20221021-200606_.png]]
+
+本笔记的目的是记录刚开始使用emacs的一些坑和常用功能。
 最开始分别用过apple备忘录、有道云、onenote作为科研的笔记软件，感受到最大的痛点就是：树状笔记管理非常麻烦，得提前归档好目录供每个笔记选择。其次就是同步慢、对代码支持不够好等等小毛病，因此就像选一个能够不用树状来管理笔记的软件，双链笔记就进入了我的考虑范围。在对比了logseq、obsidian和emacs之后，发现还是emacs上限更高，想下决心试试。
 |          | org-mode | 搜索 | 稳定性  | html导出 | 学习曲线 | latex支持 | 代码实时运行 |
 |----------+----------+------+---------+----------+----------+-----------+--------------|
@@ -480,7 +485,103 @@ M-x all-the-icons-install-fonts
 - ppt制作
   https://www.youtube.com/watch?v=vz9aLmxYJB0
 - hugo生成博客
-  http://holbrook.github.io/2012/04/12/emacs_orgmode_editor.html
+  1. 安装插件
+     为了把笔记导出到网站，需要用到[[https://github.com/kaushalmodi/ox-hugo][ox-hugo]]插件，在init.el中添加
+  #+begin_src 
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+  :after ox)
+  #+end_src
+  然后执行 =M-x eval-buffer=
+  现在就可以写一篇用于博客发布的org笔记了，写完之后需要转化为 =.md= 文件才能发布到博客，因为我需要导出到博客的笔记暂时还比较少，打算先用单独添加的方法，只需在需要发布的org文件结尾添加
+  #+begin_src 
+,* COMMENT Local Variables :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:
+
+  #+end_src
+ 如果想要对所有的org文件都执行自动保存用于发布，可以参考[fn:15]。
+ 接下来执行 =C-x C-s= 保存文件就能在minibuffer看到文件已导出到 =.md= 文件（如果没有重新打开一下emacs）
+ 2. 创建git仓库
+    这一步是为了之后能用到[[https://docs.github.com/cn/pages][github pages]]进行发布。首先要安装git，然后到github新建一个名为 =username.github.io= 的仓库，其中 =username= 是你自己的github用户名，如我的[[https://cntommy.github.io/docs/][cntommy.github.io]]
+    #+begin_src
+      $ cd ~/notes
+      $ git init   #进行仓库初始化
+      $ git remote add origin https://github.com/<username>/<username>.github.io.git  
+      $ git add . && git commit -m 'init'
+      $ git push origin main
+
+    #+end_src
+    然后配置 =github action= 进行自动化发布
+    #+begin_src
+      $ cd ~/notes
+      $ mkdir -p .github/workflows
+
+    #+end_src
+    打开emacs执行 =C-x C-f ~/notes/.github/workflows/main.yml RET= ，把下面的内容[fn:16]粘贴进去，按 =C-x C-s= 保存
+    #+begin_src
+name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
+    #+end_src
+    接下来再执行 =C-x C-f ~/notes/config.toml RET= 调整配置，并保存
+    #+begin_src
+      baseURL = "http://username.github.io/"     # 替换 username 为你自己的用户名
+    #+end_src
+    最后打开github对应仓库的setting，把pages的branch修改为hugo默认的gh-pages
+#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 21:12:58
+[[file:../images/screenshot20221021-211258_.png]]
+    
+ 2. 配置主题
+    在网上看到了比较喜欢的[[https://zzo-docs.vercel.app][zdoc]]主题，颜值和实用性都比较高，就是配置起来会稍微麻烦一点，预览图如下所示，接下来开搞！
+#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 20:41:30
+[[file:../images/screenshot20221021-204130_.png]]
+首先在需要给当前的仓库添加主题子模块
+#+begin_src
+  $ cd ~/notes
+  $ git submodule add https://github.com/zzossig/hugo-theme-zdoc.git themes/zdoc
+#+end_src
+然后把 =zdoc/exampleSite/= 目录下的四个文件夹拷贝到hugo的项目根目录 =~/notes= 下，再在 =~/notes/content/en/docs/= 目录中添加 =.md= 笔记文件
+然后提交配置文件和笔记
+#+begin_src
+  $ git add .
+  $ git commit -m 'add workflow'
+  $ git push origin master
+#+end_src
+就能通过 =username.github.io= 访问了~
+这块内容主要参考了这几篇文章[fn:17][fn:14]
 - 修改node名字
   修改TITLE，就能更改node名字，如果要解决文件名不一致的问题，再修改文件名[fn:3]
 - 代码块自动生成
@@ -658,6 +759,12 @@ M-x all-the-icons-install-fonts
 * Footnotes
 
 
+
+
+
+[fn:17]http://holbrook.github.io/2012/04/12/emacs_orgmode_editor.html 
+[fn:16]https://gohugo.io/hosting-and-deployment/hosting-on-github/ 
+[fn:15]https://ox-hugo.scripter.co/doc/hugo-section/ 
 [fn:14]https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-工欲善其事_必先利其器_emacs_配置篇 
 [fn:13]https://blog.51cto.com/darksun/1355334 
 [fn:11]https://zhuanlan.zhihu.com/p/556496150 
@@ -685,3 +792,9 @@ org-roam discourse https://org-roam.discourse.group
 必备扩展 https://www.zhihu.com/question/21943533
 rss https://docs.rsshub.app/
 emacs笔记https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882
+purcell's config https://github.com/purcell/emacs.d
+master emacs one year https://github.com/redguardtoo/mastering-emacs-in-one-year-guide
+* COMMENT Local Variables                          :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

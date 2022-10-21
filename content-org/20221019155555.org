@@ -14,5 +14,14 @@ how to decide the value of a thing
    something has expected return, like writing paper
 3. do i like the thing
    something can relax myself and helps improving skills
+
+
+* COMMENT Local Variables                          :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:
    
    
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:
