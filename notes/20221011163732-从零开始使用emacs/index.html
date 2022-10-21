@@ -1,91 +1,91 @@
-<!doctype html><html lang=en-us><title>从零开始使用emacs | 高乐高的沙堆</title><meta charset=utf-8><meta name=generator content="Hugo 0.85.0"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=http://cntommy.github.io/css/index.css><link rel=canonical href=http://cntommy.github.io/notes/20221011163732-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8emacs/><link rel=alternate type=application/rss+xml href title=高乐高的沙堆><header><a href=http://cntommy.github.io/ class=title>高乐高的沙堆</a></header><article><header><h1>从零开始使用emacs</h1><time datetime=2022-10-11T16:37:00+08:00>October 11, 2022</time></header><p>接触emacs是因为在一次组会上听到付老师用它作为科研笔记和文献管理的工具，由于其双链的功能和对latex的支持非常适合梳理一些杂乱的思路和生成论文，因此想学习一下，虽然传言学习曲线非常陡峭。（此处想插一个图，但是我还不会）。本笔记的目的是记录刚开始使用emacs的一些坑和常用功能：</p><h2 id=为什么选择emacs>为什么选择emacs</h2><p>最开始分别用过apple备忘录、有道云、onenote作为科研的笔记软件，感受到最大的痛点就是：树状笔记管理非常麻烦，得提前归档好目录供每个笔记选择。其次就是同步慢、对代码支持不够好等等小毛病，因此就像选一个能够不用树状来管理笔记的软件，双链笔记就进入了我的考虑范围。在对比了logseq、obsidian和emacs之后，发现还是emacs上限更高，想下决心试试。</p><table><thead><tr><th></th><th>org-mode</th><th>搜索</th><th>稳定性</th><th>html导出</th><th>学习曲线</th><th>latex支持</th><th>代码实时运行</th></tr></thead><tbody><tr><td>emacs</td><td>支持</td><td>全局</td><td>好</td><td>支持</td><td>陡峭</td><td>全集</td><td>支持</td></tr><tr><td>logseq</td><td>支持</td><td>全局</td><td>会有bug</td><td>？</td><td>稍简单</td><td>子集</td><td>不支持</td></tr><tr><td>obsidian</td><td>不支持</td><td>文件</td><td>好</td><td>？</td><td>稍简单</td><td>子集</td><td>不支持</td></tr></tbody></table><h2 id=软件安装>软件安装</h2><p>首先使用brew命令安装emacs,'&ndash;cask&rsquo;表示安装带有图形界面的软件，如果安装比较慢可以考虑给brew换国内源<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><pre><code class=language-nil data-lang=nil>brew update
+<!doctype html><html lang=en-us><title>从零开始使用emacs | 高乐高的沙堆</title><meta charset=utf-8><meta name=generator content="Hugo 0.104.3"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=http://cntommy.github.io/css/index.css><link rel=canonical href=http://cntommy.github.io/notes/20221011163732-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8emacs/><link rel=alternate type=application/rss+xml href title=高乐高的沙堆><header><a href=http://cntommy.github.io/ class=title>高乐高的沙堆</a></header><article><header><h1>从零开始使用emacs</h1><time datetime=2022-10-11T16:37:00+08:00>October 11, 2022</time></header><p>接触emacs是因为在一次组会上听到付老师用它作为科研笔记和文献管理的工具，由于其双链的功能和对latex的支持非常适合梳理一些杂乱的思路和生成论文，因此想学习一下，虽然传言学习曲线非常陡峭。（此处想插一个图，但是我还不会）。本笔记的目的是记录刚开始使用emacs的一些坑和常用功能：</p><h2 id=为什么选择emacs>为什么选择emacs</h2><p>最开始分别用过apple备忘录、有道云、onenote作为科研的笔记软件，感受到最大的痛点就是：树状笔记管理非常麻烦，得提前归档好目录供每个笔记选择。其次就是同步慢、对代码支持不够好等等小毛病，因此就像选一个能够不用树状来管理笔记的软件，双链笔记就进入了我的考虑范围。在对比了logseq、obsidian和emacs之后，发现还是emacs上限更高，想下决心试试。</p><table><thead><tr><th></th><th>org-mode</th><th>搜索</th><th>稳定性</th><th>html导出</th><th>学习曲线</th><th>latex支持</th><th>代码实时运行</th></tr></thead><tbody><tr><td>emacs</td><td>支持</td><td>全局</td><td>好</td><td>支持</td><td>陡峭</td><td>全集</td><td>支持</td></tr><tr><td>logseq</td><td>支持</td><td>全局</td><td>会有bug</td><td>？</td><td>稍简单</td><td>子集</td><td>不支持</td></tr><tr><td>obsidian</td><td>不支持</td><td>文件</td><td>好</td><td>？</td><td>稍简单</td><td>子集</td><td>不支持</td></tr></tbody></table><h2 id=软件安装>软件安装</h2><p>首先使用brew命令安装emacs,&rsquo;&ndash;cask&rsquo;表示安装带有图形界面的软件，如果安装比较慢可以考虑给brew换国内源<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p><pre tabindex=0><code class=language-nil data-lang=nil>brew update
 brew install --cask emacs
-</code></pre><p>安装完成之后界面确实看着不好看，于是就照着教程重新配置了外观</p><pre><code class=language-nil data-lang=nil>cd ~
+</code></pre><p>安装完成之后界面确实看着不好看，于是就照着教程重新配置了外观</p><pre tabindex=0><code class=language-nil data-lang=nil>cd ~
 rm -rf .emacs   #如果手动修改过emacs的配置可能会产生这个文件，删除可以避免后面的配置文件失效
 cd ~/.emacs.d
 touch init.el   #创建配置文件
-</code></pre><p>接着打开emacs，输入C-x C-f，会等待输入打开的文件，输入~/.emacs.d/init.el &lt;RET>，输入命令刷新安装包列表</p><pre><code class=language-nil data-lang=nil>M-x package-refresh-contents
-</code></pre><p>再把下面的配置代码粘贴到文件中</p><pre><code class=language-nil data-lang=nil>;; 窗口最大化
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+</code></pre><p>接着打开emacs，输入C-x C-f，会等待输入打开的文件，输入~/.emacs.d/init.el &lt;RET>，输入命令刷新安装包列表</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x package-refresh-contents
+</code></pre><p>再把下面的配置代码粘贴到文件中</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 窗口最大化
+(add-to-list &#39;default-frame-alist &#39;(fullscreen . maximized))
 
 ;; 系统共享剪切板
 ;; see also:
 ;;   https://www.emacswiki.org/emacs/CopyAndPaste
 ;;   https://www.reddit.com/r/emacs/comments/5n9t3f/copypaste_from_system_clipboard_on_windows/
 (defun copy-from-osx ()
-  (shell-command-to-string &quot;pbpaste&quot;))
+  (shell-command-to-string &#34;pbpaste&#34;))
 
 (defun paste-to-osx (text &amp;optional push)
   (let ((process-connection-type nil))
-    (let ((proc (start-process &quot;pbcopy&quot; &quot;*Messages*&quot; &quot;pbcopy&quot;)))
+    (let ((proc (start-process &#34;pbcopy&#34; &#34;*Messages*&#34; &#34;pbcopy&#34;)))
       (process-send-string proc text)
       (process-send-eof proc))))
 
 (cond
- ((memq window-system '(x))
+ ((memq window-system &#39;(x))
   (setq x-select-enable-primary t
         x-select-enable-clipboard nil))
- ((memq window-system '(mac ns))
-  (setq interprogram-cut-function 'paste-to-osx
-        interprogram-paste-function 'copy-from-osx))
- ((memq window-system '(win32 pc))
+ ((memq window-system &#39;(mac ns))
+  (setq interprogram-cut-function &#39;paste-to-osx
+        interprogram-paste-function &#39;copy-from-osx))
+ ((memq window-system &#39;(win32 pc))
   (setq select-enable-primary t
         select-enable-clipboard t
         save-interprogram-paste-before-kill t)))
 
 ;; 指定自定义配置文件，防止自定义配置污染 init.el，并加载该配置文件
-(setq custom-file (expand-file-name &quot;~/.emacs.d/custom.el&quot;))
+(setq custom-file (expand-file-name &#34;~/.emacs.d/custom.el&#34;))
 (if (file-exists-p custom-file)
     (load custom-file))
 
 ;; Font
 ;; Download Victor Mono at https://rubjo.github.io/victor-mono/
-(set-face-attribute 'default nil :height 170 :weight 'normal)
-;; (set-face-attribute 'default nil :family &quot;Victor Mono&quot; :height 170 :weight 'normal)
+(set-face-attribute &#39;default nil :height 170 :weight &#39;normal)
+;; (set-face-attribute &#39;default nil :family &#34;Victor Mono&#34; :height 170 :weight &#39;normal)
 
 ;; 中文显示
-(set-language-environment &quot;utf-8&quot;)
-(set-buffer-file-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-clipboard-coding-system 'utf-8)
-(modify-coding-system-alist 'process &quot;*&quot; 'utf-8)
-(prefer-coding-system 'utf-8)
-(setq-default pathname-coding-system 'utf-8)
+(set-language-environment &#34;utf-8&#34;)
+(set-buffer-file-coding-system &#39;utf-8)
+(set-terminal-coding-system &#39;utf-8)
+(set-keyboard-coding-system &#39;utf-8)
+(set-selection-coding-system &#39;utf-8)
+(set-default-coding-systems &#39;utf-8)
+(set-clipboard-coding-system &#39;utf-8)
+(modify-coding-system-alist &#39;process &#34;*&#34; &#39;utf-8)
+(prefer-coding-system &#39;utf-8)
+(setq-default pathname-coding-system &#39;utf-8)
 (setq
- default-process-coding-system '(utf-8 . utf-8)
- locale-coding-system 'utf-8
- file-name-coding-system 'utf-8
- default-buffer-file-coding-system 'utf-8
- slime-net-coding-system 'utf-8-unix)
+ default-process-coding-system &#39;(utf-8 . utf-8)
+ locale-coding-system &#39;utf-8
+ file-name-coding-system &#39;utf-8
+ default-buffer-file-coding-system &#39;utf-8
+ slime-net-coding-system &#39;utf-8-unix)
 
-(setenv &quot;LC_CTYPE&quot; &quot;UTF-8&quot;)
-(setenv &quot;LC_ALL&quot; &quot;en_US.UTF-8&quot;)
-(setenv &quot;LANG&quot; &quot;en_US.UTF-8&quot;)                           ; Iterate through CamelCase words
+(setenv &#34;LC_CTYPE&#34; &#34;UTF-8&#34;)
+(setenv &#34;LC_ALL&#34; &#34;en_US.UTF-8&#34;)
+(setenv &#34;LANG&#34; &#34;en_US.UTF-8&#34;)                           ; Iterate through CamelCase words
 
 ;; 基本设置
 (setq-default
- indicate-buffer-boundaries 'left ;; 在窗口边缘上显示一个小箭头指示当前 buffer 的边界
+ indicate-buffer-boundaries &#39;left ;; 在窗口边缘上显示一个小箭头指示当前 buffer 的边界
  delete-by-moving-to-trash t                      ;; 删除文件移动到垃圾箱
  window-combination-resize t                      ;; 新窗口平均其他左右窗口
  x-stretch-cursor t                               ;; 将光标拉伸到字形宽度
  kill-whole-line t)  ;; C-k时,同时删除该行
 
 ;;; Tidy workdir
-(make-directory &quot;~/.emacs.d/data/backup/&quot; t)
-(setq auto-save-file-name-transforms '((&quot;.*&quot; &quot;~/.emacs.d/data/backup/&quot; t)) ; Write auto-save files to a separate directory
-      backup-directory-alist '((&quot;.&quot; . &quot;~/.emacs.d/data/backup/&quot;))          ; Write backup files to a separate directory
+(make-directory &#34;~/.emacs.d/data/backup/&#34; t)
+(setq auto-save-file-name-transforms &#39;((&#34;.*&#34; &#34;~/.emacs.d/data/backup/&#34; t)) ; Write auto-save files to a separate directory
+      backup-directory-alist &#39;((&#34;.&#34; . &#34;~/.emacs.d/data/backup/&#34;))          ; Write backup files to a separate directory
       create-lockfiles nil                                                 ; Disable lockfiles as I use only one Emacs instance
       )
 
 (setq
  fringes-outside-margins t   ;; fringe 放在外面
  echo-keystrokes 0.1         ;; 尽快显示按键序列
- system-time-locale &quot;zh_CN&quot;  ;; 设置系统时间显示格式
- tab-always-indent 'complete ;; Tab 键优先格式化再补全
- font-lock-global-modes '(not shell-mode text-mode) ;; 设置语法高亮.除shell-mode和text-mode之外的模式
+ system-time-locale &#34;zh_CN&#34;  ;; 设置系统时间显示格式
+ tab-always-indent &#39;complete ;; Tab 键优先格式化再补全
+ font-lock-global-modes &#39;(not shell-mode text-mode) ;; 设置语法高亮.除shell-mode和text-mode之外的模式
  mouse-yank-at-point t       ;; 不在鼠标点击的地方插入剪贴板内容
  kill-ring-max 200           ;; 设置 kill ring 个数
  default-fill-column 60      ;; 把fill-column设为60.让文字更好读
@@ -97,22 +97,22 @@ touch init.el   #创建配置文件
  next-line-add-newlines nil  ;; 按C-n或down时不添加新行
  ;; emacs启动时显示的内容可以通过变量initial-scratch-message来设置
  initial-scratch-message nil
- dired-listing-switches &quot;-vha&quot; ;;  dired 列出文件的参数（man ls）
- show-paren-style 'parenthesis ;; 括号匹配时高亮显示另一边的括号，而不是跳到另一个括号处
+ dired-listing-switches &#34;-vha&#34; ;;  dired 列出文件的参数（man ls）
+ show-paren-style &#39;parenthesis ;; 括号匹配时高亮显示另一边的括号，而不是跳到另一个括号处
  undo-limit 80000000           ;; 提升撤销限制
  auto-save-default t           ;; 打开自动保存
- truncate-string-ellipsis &quot;…&quot;  ;; Unicode ellispis are nicer than &quot;...&quot;, and also save /precious/ space
+ truncate-string-ellipsis &#34;…&#34;  ;; Unicode ellispis are nicer than &#34;...&#34;, and also save /precious/ space
  ;; 当寻找一个同名的文件,改变两个buffer的名字,前面加上目录名
- uniquify-buffer-name-style 'post-forward-angle-brackets)
+ uniquify-buffer-name-style &#39;post-forward-angle-brackets)
 (if (display-graphic-p)
     (progn
       (menu-bar-mode -1)            ;; 取消菜单栏
       (scroll-bar-mode -1)          ;; 取消滚动条（在 Emacs 26 中无效）
       (tool-bar-mode -1)))          ;; 取消工具栏
-(fset 'yes-or-no-p 'y-or-n-p) ;; 按y或space表示yes,n表示no
+(fset &#39;yes-or-no-p &#39;y-or-n-p) ;; 按y或space表示yes,n表示no
 (global-font-lock-mode t)     ;; 语法高亮
 (show-paren-mode t)           ;; 打开括号匹配显示模式
-(mouse-avoidance-mode 'animate) ;; 鼠标靠近光标指针时,让鼠标自动让开
+(mouse-avoidance-mode &#39;animate) ;; 鼠标靠近光标指针时,让鼠标自动让开
 (auto-compression-mode 1) ;; 打开压缩文件时自动解压缩
 (global-auto-revert-mode 1)       ;; 自动重载更改的文件
 (blink-cursor-mode -1)            ;; 指针不要闪
@@ -120,7 +120,7 @@ touch init.el   #创建配置文件
 (column-number-mode t)            ;; 在minibuffer上面的状态栏显示文件的行号,列号
 (line-number-mode t)              ;;设定显示文件的参数,以版本/人性化的显示,就是ls的参数
 (global-linum-mode t)             ;; 显示行号
-(require 'saveplace)
+(require &#39;saveplace)
 (save-place-mode 1)               ;; 记住上次打开文件光标的位置
 (global-subword-mode 1)           ;; 拆分连字符：oneWord 会被当作两个单词处理
 
@@ -134,45 +134,45 @@ touch init.el   #创建配置文件
       display-time-day-and-date t   ;; 时间显示包括日期和具体时间
       display-time-use-mail-icon t   ;; 时间栏旁边启用邮件设置
       display-time-interval 10   ;; 时间的变化频率
-      display-time-format &quot;%A %H:%M&quot;)   ;; 显示时间的格式
+      display-time-format &#34;%A %H:%M&#34;)   ;; 显示时间的格式
 
-(unless (string-match-p &quot;^Power N/A&quot; (battery))   ; 笔记本上显示电量
+(unless (string-match-p &#34;^Power N/A&#34; (battery))   ; 笔记本上显示电量
   (display-battery-mode 1))
 </code></pre><p>然后再执行M-x eval-buffer，可以看到emacs外观的变化，这样就修改成功了。
-下一步就是安装几个外观的插件，由于straight.el包管理一直报错，折腾一会之后打算还是用内置的package.el来管理包，再之前的文件后追加内容：</p><pre><code class=language-nil data-lang=nil>;; 初始化use-package
+下一步就是安装几个外观的插件，由于straight.el包管理一直报错，折腾一会之后打算还是用内置的package.el来管理包，再之前的文件后追加内容：</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 初始化use-package
 ;;{{{ Set up package and use-package
 
-(require 'package)
-(add-to-list 'package-archives
-             '(&quot;melpa&quot; . &quot;https://melpa.org/packages/&quot;) t)
+(require &#39;package)
+(add-to-list &#39;package-archives
+             &#39;(&#34;melpa&#34; . &#34;https://melpa.org/packages/&#34;) t)
 (package-initialize)
 
-;; Bootstrap 'use-package'
-(eval-after-load 'gnutls
-  '(add-to-list 'gnutls-trustfiles &quot;/etc/ssl/cert.pem&quot;))
-(unless (package-installed-p 'use-package)
+;; Bootstrap &#39;use-package&#39;
+(eval-after-load &#39;gnutls
+  &#39;(add-to-list &#39;gnutls-trustfiles &#34;/etc/ssl/cert.pem&#34;))
+(unless (package-installed-p &#39;use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install &#39;use-package))
 (eval-when-compile
-  (require 'use-package))
-(require 'bind-key)
+  (require &#39;use-package))
+(require &#39;bind-key)
 (setq use-package-always-ensure t)
 
 ;;}}}
 
 ;; use-package安装
-(add-to-list 'load-path &quot;~/.emacs.d/site-lisp/use-package&quot;)
-(require 'use-package)
+(add-to-list &#39;load-path &#34;~/.emacs.d/site-lisp/use-package&#34;)
+(require &#39;use-package)
 
-(with-eval-after-load 'info
+(with-eval-after-load &#39;info
   (info-initialize)
-  (add-to-list 'Info-directory-list
-               &quot;~/.emacs.d/site-lisp/use-package/&quot;))
+  (add-to-list &#39;Info-directory-list
+               &#34;~/.emacs.d/site-lisp/use-package/&#34;))
 
 ;; 设置源
-(require 'package)
-(add-to-list 'package-archives
-'(&quot;melpa-stable&quot; . &quot;https://stable.melpa.org/packages/&quot;))
+(require &#39;package)
+(add-to-list &#39;package-archives
+&#39;(&#34;melpa-stable&#34; . &#34;https://stable.melpa.org/packages/&#34;))
 
 (use-package all-the-icons :ensure t)
 
@@ -182,16 +182,16 @@ touch init.el   #创建配置文件
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-vibrant t)
+  (load-theme &#39;doom-vibrant t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
-  (setq doom-themes-treemacs-theme &quot;doom-atom&quot;) ; use &quot;doom-colors&quot; for less minimal icon theme
+  (setq doom-themes-treemacs-theme &#34;doom-atom&#34;) ; use &#34;doom-colors&#34; for less minimal icon theme
   (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
+  ;; Corrects (and improves) org-mode&#39;s native fontification.
   (doom-themes-org-config))
 
 
@@ -209,81 +209,81 @@ touch init.el   #创建配置文件
 ;;(setq dashboard-center-content t)
 ;;(setq dashboard-set-heading-icons t)
 ;;(setq dashboard-set-file-icons t)
-;;(setq initial-buffer-choice (lambda () (get-buffer &quot;*dashboard*&quot;)))
+;;(setq initial-buffer-choice (lambda () (get-buffer &#34;*dashboard*&#34;)))
 
-(setq my/all-notes &quot;~/notes/&quot;)
+(setq my/all-notes &#34;~/notes/&#34;)
 
-(require 'org-tempo)
+(require &#39;org-tempo)
 (use-package org
   :bind
   ;; 冲突
-  ;; (&quot;C-c c&quot; . org-capture)
-  ;; (&quot;C-c a o&quot; . org-agenda)
-  (&quot;C-c C-.&quot; . org-mark-ring-goto)
+  ;; (&#34;C-c c&#34; . org-capture)
+  ;; (&#34;C-c a o&#34; . org-agenda)
+  (&#34;C-c C-.&#34; . org-mark-ring-goto)
   :custom
   (org-startup-indented t)
   (org-hide-leading-stars t)
   (org-odd-level-only nil)
   (org-insert-heading-respect-content nil)
-  (org-M-RET-may-split-line '((item) (default . t)))
+  (org-M-RET-may-split-line &#39;((item) (default . t)))
   (org-special-ctrl-a/e t)
   (org-return-follows-link nil)
   (org-use-speed-commands t)
   (org-startup-align-all-tables nil)
   (org-log-into-drawer nil)
   (org-tags-column 1)
-  (org-ellipsis &quot; \u25bc&quot; )
+  (org-ellipsis &#34; \u25bc&#34; )
   (org-speed-commands-user nil)
-  (org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (org-blank-before-new-entry &#39;((heading . nil) (plain-list-item . nil)))
   (org-completion-use-ido t)
   (org-indent-mode t)
   (org-startup-truncated nil)
   :custom-face
   (org-headline-done ((nil (:strike-through t))))
   :init
-  (require 'org-id)
+  (require &#39;org-id)
   (defun my/org-id-update-id-locations-current-dir()
-    &quot;Update id locations from current dir.&quot;
+    &#34;Update id locations from current dir.&#34;
     (interactive)
-    (org-id-update-id-locations (directory-files &quot;.&quot; t &quot;\.org\$&quot; t)))
+    (org-id-update-id-locations (directory-files &#34;.&#34; t &#34;\.org\$&#34; t)))
   (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((dot . t))))
+   &#39;org-babel-load-languages
+   &#39;((dot . t))))
 
-(setq org-roam-database-connector 'sqlite3)
+(setq org-roam-database-connector &#39;sqlite3)
 
 (use-package org-roam
   :ensure t
   :config
   ;; If using org-roam-protocol
-  (require 'org-roam-protocol)
+  (require &#39;org-roam-protocol)
   :bind
-  (&quot;C-c n l&quot; . org-roam-buffer-toggle)
-  (&quot;C-c n f&quot; . org-roam-node-find)
-  (&quot;C-c n g&quot; . org-roam-graph)
-  (&quot;C-c n i&quot; . org-roam-node-insert)
-  (&quot;C-c n c&quot; . org-roam-capture)
+  (&#34;C-c n l&#34; . org-roam-buffer-toggle)
+  (&#34;C-c n f&#34; . org-roam-node-find)
+  (&#34;C-c n g&#34; . org-roam-graph)
+  (&#34;C-c n i&#34; . org-roam-node-insert)
+  (&#34;C-c n c&#34; . org-roam-capture)
   ;; Dailies
-  (&quot;C-c n j&quot; . org-roam-dailies-capture-today)
+  (&#34;C-c n j&#34; . org-roam-dailies-capture-today)
   :custom
   (org-roam-v2-ack t)
-  (org-roam-directory (string-join (cons my/all-notes '(&quot;content-org&quot;)) &quot;/&quot;))
-  (org-roam-capture-templates `((&quot;d&quot; &quot;default&quot; plain &quot;%?&quot;
+  (org-roam-directory (string-join (cons my/all-notes &#39;(&#34;content-org&#34;)) &#34;/&#34;))
+  (org-roam-capture-templates `((&#34;d&#34; &#34;default&#34; plain &#34;%?&#34;
                                  :unnarrowed t
-                                 :if-new (file+head &quot;%&lt;%Y%m%d%H%M%S&gt;-${slug}.org&quot;
-                                                    &quot;#+TITLE: ${title}
+                                 :if-new (file+head &#34;%&lt;%Y%m%d%H%M%S&gt;-${slug}.org&#34;
+                                                    &#34;#+TITLE: ${title}
 #+AUTHOR: Jun Gao
 #+DATE: %U
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: notes
-&quot;)))))
+&#34;)))))
 
 (use-package org-superstar
   :hook
   (org-mode . (lambda () (org-superstar-mode 1))))
-</code></pre><p>中间有一些设置因为报错先注释掉了，准备之后有时间再慢慢调教，当务之急还是先学习做笔记的功能，增加完上述代码之后再次执行</p><pre><code class=language-nil data-lang=nil>M-x eval-buffer
-</code></pre><p>然后安装一下all-the-icons的字体</p><pre><code class=language-nil data-lang=nil>M-x all-the-icons-install-fonts
-</code></pre><p>就能开始愉快的做笔记啦！</p><p>主要参考了<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></p><h2 id=常用功能>常用功能</h2><p>我的需求是用来做科研笔记，同时可能记录一些日常，接下来从软件的界面到功能进行记录：</p><ul><li><p>软件界面及相关术语</p><table><thead><tr><th>术语</th><th>解释</th></tr></thead><tbody><tr><td>buffer</td><td>缓冲，完成编辑操作的区域</td></tr><tr><td>frame</td><td>用了感觉是新的窗口的意思</td></tr><tr><td>window</td><td>特定frame下的子窗口，可以嵌套</td></tr><tr><td>minibuffer</td><td>底部输入指令的区域</td></tr></tbody></table></li><li><p>window&frame操作</p><pre><code class=language-nil data-lang=nil>全屏当前frame？
+</code></pre><p>中间有一些设置因为报错先注释掉了，准备之后有时间再慢慢调教，当务之急还是先学习做笔记的功能，增加完上述代码之后再次执行</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x eval-buffer
+</code></pre><p>然后安装一下all-the-icons的字体</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x all-the-icons-install-fonts
+</code></pre><p>就能开始愉快的做笔记啦！</p><p>主要参考了<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></p><h2 id=常用功能>常用功能</h2><p>我的需求是用来做科研笔记，同时可能记录一些日常，接下来从软件的界面到功能进行记录：</p><ul><li><p>软件界面及相关术语</p><table><thead><tr><th>术语</th><th>解释</th></tr></thead><tbody><tr><td>buffer</td><td>缓冲，完成编辑操作的区域</td></tr><tr><td>frame</td><td>用了感觉是新的窗口的意思</td></tr><tr><td>window</td><td>特定frame下的子窗口，可以嵌套</td></tr><tr><td>minibuffer</td><td>底部输入指令的区域</td></tr></tbody></table></li><li><p>window&frame操作</p><pre tabindex=0><code class=language-nil data-lang=nil>全屏当前frame？
 C-x o   切换window   C-x 5 o   切换frame
 C-x 0   删除当前window   C-x 5 0   删除当前frame
 C-x 1   只保留当前window   C-x 5 1   只保留当前frame
@@ -292,8 +292,8 @@ C-x 3   左右分裂window
 
 C-x C-b   列出所有的buffer
 C-x C-c   退出emacs（不保留没关联的buffer？）
-</code></pre></li><li><p>帮助</p><pre><code class=language-nil data-lang=nil>C-h b   查看当前buffer的快捷键
-</code></pre></li><li><p>编辑操作</p><ul><li>移动<pre><code class=language-nil data-lang=nil>C-f   后一个字符
+</code></pre></li><li><p>帮助</p><pre tabindex=0><code class=language-nil data-lang=nil>C-h b   查看当前buffer的快捷键
+</code></pre></li><li><p>编辑操作</p><ul><li>移动<pre tabindex=0><code class=language-nil data-lang=nil>C-f   后一个字符
 C-b   前一个字符
 M-f   后一个单词
 M-b   前一个单词
@@ -308,7 +308,7 @@ M-g g   根据行号跳转
 C-c C-n   移动到下一个标题
 C-c C-f   移动到同等级的下一个标题
 C-c C-x C-n   移动到下一个链接
-</code></pre></li></ul><pre><code class=language-nil data-lang=nil>C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
+</code></pre></li></ul><pre tabindex=0><code class=language-nil data-lang=nil>C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
 C-@   标记选择
 C-w   剪切
 M-w   复制
@@ -321,74 +321,72 @@ C-s   查找   全局查找？
 C-x n s   聚焦当前字内容
 C-x n w   退出聚焦
 C-c C-x f   当前point添加脚注，并跳转
-
-</code></pre></li><li><p>目录&文件操作<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></p><pre><code class=language-nil data-lang=nil>M-S-d   浏览特定目录
+</code></pre></li><li><p>目录&文件操作<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></p><pre tabindex=0><code class=language-nil data-lang=nil>M-S-d   浏览特定目录
 C-x C-f   打开文件
 C-x C-s   保存文件
 C-x s   询问每个和file关联的buffer要不要保存
 M-x recover-this-file&lt;RET&gt;   恢复文件   M-x recover-file&lt;RET&gt;filename&lt;RET&gt;
 M-x ediff-files   比较两个文件   j   跳到第一个差异处   &lt;SPA&gt;   下一个差异处
 </code></pre><p><a href=http://blog.lujun9972.win/blog/2016/12/10/emacs%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8--dired%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/>http://blog.lujun9972.win/blog/2016/12/10/emacs%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8--dired%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/</a></p></li><li><p>截图、插入图片并显示<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>, <sup id=fnref:5><a href=#fn:5 class=footnote-ref role=doc-noteref>5</a></sup>
-首先在init中配置org-download，然后用brew安装pngpaste，就能实现C-M-y快捷键截图插入，同时保存在"~/notes/images"目录下</p></li></ul><pre><code class=language-nil data-lang=nil>;; 图片管理
-(package-install 'org-download)
+首先在init中配置org-download，然后用brew安装pngpaste，就能实现C-M-y快捷键截图插入，同时保存在"~/notes/images"目录下</p></li></ul><pre tabindex=0><code class=language-nil data-lang=nil>;; 图片管理
+(package-install &#39;org-download)
 (use-package org-download
   :ensure t
   :config
   ;; Drag-and-drop to `dired`
-  (add-hook 'dired-mode-hook 'org-download-enable)
-  (require 'org-download)
+  (add-hook &#39;dired-mode-hook &#39;org-download-enable)
+  (require &#39;org-download)
   :custom
-  (org-download-method 'directory)
-  (org-download-image-dir &quot;~/notes/images&quot;)
+  (org-download-method &#39;directory)
+  (org-download-image-dir &#34;~/notes/images&#34;)
   (org-download-heading-lvl nil)
-  (org-download-timestamp &quot;%Y%m%d-%H%M%S_&quot;)
+  (org-download-timestamp &#34;%Y%m%d-%H%M%S_&#34;)
   ;; 将图片显示大小固定位屏幕宽度的三分之一
   (org-image-actual-width (/ (display-pixel-width) 3))
-    (org-download-screenshot-method &quot;/usr/local/bin/pngpaste %s&quot;)
+    (org-download-screenshot-method &#34;/usr/local/bin/pngpaste %s&#34;)
   :bind
-  (&quot;C-M-y&quot; . org-download-screenshot))
-</code></pre><p>图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图</p><ul><li>node相关操作<pre><code class=language-nil data-lang=nil>C-c n f   查找/新建node
+  (&#34;C-M-y&#34; . org-download-screenshot))
+</code></pre><p>图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图</p><ul><li>node相关操作<pre tabindex=0><code class=language-nil data-lang=nil>C-c n f   查找/新建node
 C-c n i   在buffer中插入node
 C-c C-c   确认
 C-c C-k   取消
 C-c C-o   跳转到光标所在node
 C-c C-.   返回到之前的node
 C-c n l   调出backlink
-
 </code></pre></li></ul><p>主要参考了以下博客：
 <a href=https://www.zmonster.me/2015/07/12/org-mode-introduction.html>org-mode</a></p><ul><li><p>表格操作
 参考<sup id=fnref:6><a href=#fn:6 class=footnote-ref role=doc-noteref>6</a></sup></p></li><li><p>文献管理
 看了网上的推荐之后，决定试一试zotero+zotxt-emacs
-首先给zotero安装zotxt插件，用于和emacs关联，同时给emacs安装zotxt，在init文件中添加</p><pre><code class=language-nil data-lang=nil>;; 文献管理
-(package-install 'zotxt)
-</code></pre><p>然后让init文件生效，同时打开zotxt的minor mode</p><pre><code class=language-nil data-lang=nil>M-x eval-buffer
+首先给zotero安装zotxt插件，用于和emacs关联，同时给emacs安装zotxt，在init文件中添加</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 文献管理
+(package-install &#39;zotxt)
+</code></pre><p>然后让init文件生效，同时打开zotxt的minor mode</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x eval-buffer
 M-x org-zotxt-mode
-</code></pre><p>为了生成pdf时能自动生成引用编号，还需要给zotero安装 pandoc-zotxt.lua 和 Better BibTeX插件，常用的操作有下面这些</p><pre><code class=language-nil data-lang=nil>C-c &quot; i   检索zotero文献库，并插入条目
-C-c &quot; a   打开文献
-C-c &quot; u   从zotero库更新当前连接
+</code></pre><p>为了生成pdf时能自动生成引用编号，还需要给zotero安装 pandoc-zotxt.lua 和 Better BibTeX插件，常用的操作有下面这些</p><pre tabindex=0><code class=language-nil data-lang=nil>C-c &#34; i   检索zotero文献库，并插入条目
+C-c &#34; a   打开文献
+C-c &#34; u   从zotero库更新当前连接
 </code></pre><p>由于zotero官方给的文献同步空间只有300MB，可能用了一段时间会不够用，又不知道怎么利用syncthing来给zotero用，坚果云免费版每月有1G上传流量，3G下载流量，空间不限，感觉还是比较够用的，参考网上的教程配置一下<sup id=fnref:7><a href=#fn:7 class=footnote-ref role=doc-noteref>7</a></sup>。
 除此之外还发现了zotero有给文献重命名的插件<sup id=fnref:8><a href=#fn:8 class=footnote-ref role=doc-noteref>8</a></sup>，试了之后发现非常好用！</p><ul><li>过程中的问题
 emacs打开代理后会对zotxt造成影响，还不知道怎么解决</li></ul><p><a href=https://emacs-china.org/t/emacs/12580>https://emacs-china.org/t/emacs/12580</a>
 <a href="https://zhuanlan.zhihu.com/p/526795352?utm_id=0">https://zhuanlan.zhihu.com/p/526795352?utm_id=0</a>
 <a href=https://zhuanlan.zhihu.com/p/351003732>https://zhuanlan.zhihu.com/p/351003732</a></p></li><li><p>自动保存上传git，自动下拉,syncthing同步
-尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：</p><pre><code class=language-nil data-lang=nil>M-x org-roam-db-sync
+尝试了最简单暴力的方法，直接将文件夹~/notes上传到github，然后在新电脑上应用init.el的配置（配置怎么同步后续再研究一下），然后git pull仓库后执行：</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x org-roam-db-sync
 </code></pre><p>但是这种方法比较麻烦，适合低频率使用，于是选择syncthing作为日常的同步方案
-除此之外还有别的同步方案：<a href=https://emacs-china.org/t/org-files-git/19461>https://emacs-china.org/t/org-files-git/19461</a></p></li></ul><h2 id=其他优化>其他优化</h2><ul><li>cpu占用高<pre><code class=language-nil data-lang=nil>(setq history-length 100)
-(put 'minibuffer-history 'history-length 50)
-(put 'evil-ex-history 'history-length 50)
-(put 'kill-ring 'history-length 25)
-</code></pre></li><li>删除当前文件<sup id=fnref:9><a href=#fn:9 class=footnote-ref role=doc-noteref>9</a></sup><pre><code class=language-nil data-lang=nil>(defun fdx/delete-current-buffer-file ()
-    &quot;Removes file connected to current buffer and kills buffer.&quot;
+除此之外还有别的同步方案：<a href=https://emacs-china.org/t/org-files-git/19461>https://emacs-china.org/t/org-files-git/19461</a></p></li></ul><h2 id=其他优化>其他优化</h2><ul><li>cpu占用高<pre tabindex=0><code class=language-nil data-lang=nil>(setq history-length 100)
+(put &#39;minibuffer-history &#39;history-length 50)
+(put &#39;evil-ex-history &#39;history-length 50)
+(put &#39;kill-ring &#39;history-length 25)
+</code></pre></li><li>删除当前文件<sup id=fnref:9><a href=#fn:9 class=footnote-ref role=doc-noteref>9</a></sup><pre tabindex=0><code class=language-nil data-lang=nil>(defun fdx/delete-current-buffer-file ()
+    &#34;Removes file connected to current buffer and kills buffer.&#34;
     (interactive)
     (let ((filename (buffer-file-name))
           (buffer (current-buffer))
           (name (buffer-name)))
       (if (not (and filename (file-exists-p filename)))
           (ido-kill-buffer)
-        (when (yes-or-no-p &quot;Are you sure you want to remove this file? &quot;)
+        (when (yes-or-no-p &#34;Are you sure you want to remove this file? &#34;)
           (delete-file filename)
           (kill-buffer buffer)
-          (message &quot;File '%s' successfully removed&quot; filename)))))
+          (message &#34;File &#39;%s&#39; successfully removed&#34; filename)))))
 </code></pre></li><li>org-roam-db-sync
 发现每次db都不能自动同步，应该是需要打开M-x org-roam-db-autosync-mode来自动同步</li><li>文件名和TITLE对齐
 如果文件名会插入第一次设置的TITLE，那么后续修改起来会很麻烦，如果文件名默认不带TITLE，那后续就不会有这个麻烦了，而且这个不影响node的索引。<sup id=fnref:10><a href=#fn:10 class=footnote-ref role=doc-noteref>10</a></sup></li></ul><h2 id=待实现的需求>待实现的需求</h2><ul><li><p>mind map</p></li><li><p>从arxiv自动订阅带关键词的论文</p></li><li><p>ppt制作
@@ -397,44 +395,40 @@ emacs打开代理后会对zotxt造成影响，还不知道怎么解决</li></ul>
 修改TITLE，就能更改node名字，如果要解决文件名不一致的问题，再修改文件名<sup id=fnref:11><a href=#fn:11 class=footnote-ref role=doc-noteref>11</a></sup></p></li><li><p>代码块自动生成
 需要在init文件中加入(require &lsquo;org-tempo)</p></li><li><p>backlink
 副窗口怎么常显示</p></li><li><p>导出pdf</p></li><li><p>latex mode</p></li><li><p>公式
-<a href="https://zhuanlan.zhihu.com/p/526795352?utm_id=0">https://zhuanlan.zhihu.com/p/526795352?utm_id=0</a></p></li><li><p>目录树</p><pre><code class=language-nil data-lang=nil>;; 目录树
-(package-install 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-</code></pre><pre><code class=language-nil data-lang=nil>U   进入上一级目录
+<a href="https://zhuanlan.zhihu.com/p/526795352?utm_id=0">https://zhuanlan.zhihu.com/p/526795352?utm_id=0</a></p></li><li><p>目录树</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 目录树
+(package-install &#39;neotree)
+(global-set-key [f8] &#39;neotree-toggle)
+</code></pre><pre tabindex=0><code class=language-nil data-lang=nil>U   进入上一级目录
 g   刷新
 C-c C-n   创建目录或文件
 C-c C-d   删除目录或文件
 C-c C-r   重命名目录或文件
 </code></pre></li><li><p>rss
-首先安装crul</p><pre><code class=language-nil data-lang=nil>brew install crul
-</code></pre><p>然后安装elfeed，同时设置rss源<sup id=fnref:12><a href=#fn:12 class=footnote-ref role=doc-noteref>12</a></sup></p><pre><code class=language-nil data-lang=nil>;; elfeed for rss
-(package-install 'elfeed)
-(setq elfeed-feeds '(&quot;http://iccircle.com/feed&quot;))
-
-</code></pre><p>然后就能用M-x elfeed打开使用，其他的一些命令如下</p><pre><code class=language-nil data-lang=nil>M-x elfeed-add-feed   添加源
+首先安装crul</p><pre tabindex=0><code class=language-nil data-lang=nil>brew install crul
+</code></pre><p>然后安装elfeed，同时设置rss源<sup id=fnref:12><a href=#fn:12 class=footnote-ref role=doc-noteref>12</a></sup></p><pre tabindex=0><code class=language-nil data-lang=nil>;; elfeed for rss
+(package-install &#39;elfeed)
+(setq elfeed-feeds &#39;(&#34;http://iccircle.com/feed&#34;))
+</code></pre><p>然后就能用M-x elfeed打开使用，其他的一些命令如下</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x elfeed-add-feed   添加源
 M-x elfeed-update   更新源
 M-x elfeed-search-set-filter   修改过滤条件
-
-</code></pre><p>用的过程中发现了问题，没法更新，原因是很多源都不能用了，下面是一些目前还能用的</p><pre><code class=language-nil data-lang=nil>(&quot;https://www.zhihu.com/rss&quot; zhihu)
-;(&quot;http://feeds.feedburner.com/zhihu-daily&quot; news)
-(&quot;https://planet.emacslife.com/atom.xml&quot; emacs)
-;(&quot;https://www.reddit.com/r/emacs.rss&quot; emacs)
-;;(&quot;https://www.reddit.com/r/orgmode.rss&quot; emacs)
-(&quot;https://rsshub.app/rsshub/rss&quot; rss)
-(&quot;https://rsshub.app/twitter/user/DIYgod&quot; tw)
-
-</code></pre><p>同时还可添加的一些源</p><pre><code class=language-nil data-lang=nil>Link: https://docs.rsshub.app/new-media.html#wei-xin
+</code></pre><p>用的过程中发现了问题，没法更新，原因是很多源都不能用了，下面是一些目前还能用的</p><pre tabindex=0><code class=language-nil data-lang=nil>(&#34;https://www.zhihu.com/rss&#34; zhihu)
+;(&#34;http://feeds.feedburner.com/zhihu-daily&#34; news)
+(&#34;https://planet.emacslife.com/atom.xml&#34; emacs)
+;(&#34;https://www.reddit.com/r/emacs.rss&#34; emacs)
+;;(&#34;https://www.reddit.com/r/orgmode.rss&#34; emacs)
+(&#34;https://rsshub.app/rsshub/rss&#34; rss)
+(&#34;https://rsshub.app/twitter/user/DIYgod&#34; tw)
+</code></pre><p>同时还可添加的一些源</p><pre tabindex=0><code class=language-nil data-lang=nil>Link: https://docs.rsshub.app/new-media.html#wei-xin
 https://www.kexue.fm/feed
-
 </code></pre><p>elfeed-org用于管理rss源<sup id=fnref:13><a href=#fn:13 class=footnote-ref role=doc-noteref>13</a></sup>，但是安装出现了一些问题
-elfeed-summary用于提供干净的浏览界面</p><pre><code class=language-nil data-lang=nil>M-x elfeed-summary   打开浏览界面
+elfeed-summary用于提供干净的浏览界面</p><pre tabindex=0><code class=language-nil data-lang=nil>M-x elfeed-summary   打开浏览界面
 R   刷新源
 U   批量标记为已读
 M-RET   阅读同时保留未读
 u   是否只显示未读
 </code></pre></li><li><p>全局搜索
 <a href=https://emacs-china.org/t/topic/5618>https://emacs-china.org/t/topic/5618</a></p></li><li><p>进度管理
-为了对不同的项目进度进行概览，准备试一下org-mode的任务管理用法，同时记录一些快捷键，参考了这两篇教程<sup id=fnref:14><a href=#fn:14 class=footnote-ref role=doc-noteref>14</a></sup> , <sup id=fnref:15><a href=#fn:15 class=footnote-ref role=doc-noteref>15</a></sup></p><pre><code class=language-nil data-lang=nil>C-c C-t   改变标题任务状态标记   S-LEFT/RIGHT
+为了对不同的项目进度进行概览，准备试一下org-mode的任务管理用法，同时记录一些快捷键，参考了这两篇教程<sup id=fnref:14><a href=#fn:14 class=footnote-ref role=doc-noteref>14</a></sup> , <sup id=fnref:15><a href=#fn:15 class=footnote-ref role=doc-noteref>15</a></sup></p><pre tabindex=0><code class=language-nil data-lang=nil>C-c C-t   改变标题任务状态标记   S-LEFT/RIGHT
 C-c C-w   将当前光标标题及子树移到更高级标题下
 S-UP/DOWN   改变任务优先级
 
@@ -457,72 +451,70 @@ C-c a t   进入全局TODO列表   t   改变任务状态   &lt;RET&gt;跳到源
 C-c a a   进入日程表视图   l   显示日志(完成时间）
 C-c C-x C-c   打开column view   g   刷新
 C-c C-c   q   退出column view
-</code></pre><p>首先修改一下定义任务状态的关键词，在init中添加</p><pre><code class=language-nil data-lang=nil>(setq org-todo-keywords
-  '((sequence &quot;TODO(t)&quot; &quot;ONGOING(o)&quot; &quot;MAYBE(m)&quot; &quot;WAIT(w)&quot; &quot;DELEGATED(d)&quot; &quot;|&quot;
-      &quot;DONE(f)&quot; &quot;CANCELLED(c)&quot; &quot;STUCK(s)&quot;)))
-
+</code></pre><p>首先修改一下定义任务状态的关键词，在init中添加</p><pre tabindex=0><code class=language-nil data-lang=nil>(setq org-todo-keywords
+  &#39;((sequence &#34;TODO(t)&#34; &#34;ONGOING(o)&#34; &#34;MAYBE(m)&#34; &#34;WAIT(w)&#34; &#34;DELEGATED(d)&#34; &#34;|&#34;
+      &#34;DONE(f)&#34; &#34;CANCELLED(c)&#34; &#34;STUCK(s)&#34;)))
 </code></pre><p>然后重启一下emacs就能生效，如果要增加时间戳在关键字后面加！就行，如"TODO(t！)"，如果需要增加切换状态说明，则加@（都加用/分隔）
-为了方便全局的任务管理，可以根据自己的目录配置全局的清单和快捷键</p><pre><code class=language-nil data-lang=nil>;; 配置全局任务文件清单和快捷键
-(setq org-agenda-files (list &quot;~/notes/content-org/&quot;))
-(global-set-key &quot;\C-cl&quot; 'org-store-link)
-(global-set-key &quot;\C-cc&quot; 'org-capture)
-(global-set-key &quot;\C-ca&quot; 'org-agenda)
-(global-set-key &quot;\C-cb&quot; 'org-iswitchb)
+为了方便全局的任务管理，可以根据自己的目录配置全局的清单和快捷键</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 配置全局任务文件清单和快捷键
+(setq org-agenda-files (list &#34;~/notes/content-org/&#34;))
+(global-set-key &#34;\C-cl&#34; &#39;org-store-link)
+(global-set-key &#34;\C-cc&#34; &#39;org-capture)
+(global-set-key &#34;\C-ca&#34; &#39;org-agenda)
+(global-set-key &#34;\C-cb&#34; &#39;org-iswitchb)
 ;; 禁用任务组标签继承
-(setq org-tags-exclude-from-inheritance '(&quot;TG&quot;))
-</code></pre><p>接下来修改视图的显示</p><pre><code class=language-nil data-lang=nil>;; Skip entries which only have timestamp but no TODO keywords.
+(setq org-tags-exclude-from-inheritance &#39;(&#34;TG&#34;))
+</code></pre><p>接下来修改视图的显示</p><pre tabindex=0><code class=language-nil data-lang=nil>;; Skip entries which only have timestamp but no TODO keywords.
 (defun tjh/org-agenda-skip-only-timestamp-entries ()
-  (org-agenda-skip-entry-if 'nottodo 'any))
+  (org-agenda-skip-entry-if &#39;nottodo &#39;any))
 
 ;; Skip entries which are not deadlines.
  (defun tjh/org-agenda-skip-not-deadline-entries ()
-   (org-agenda-skip-entry-if 'notdeadline))
+   (org-agenda-skip-entry-if &#39;notdeadline))
 
 ;; Skip entries which are not finished.
  (defun tjh/org-agenda-skip-unfinished-entries ()
-   (org-agenda-skip-entry-if 'nottodo '(&quot;DONE&quot;)))
+   (org-agenda-skip-entry-if &#39;nottodo &#39;(&#34;DONE&#34;)))
 
 ;; Skip unscheduled entries.
  (defun tjh/org-agenda-skip-scheduled-entries ()
-   (org-agenda-skip-entry-if 'timestamp
-                 'todo '(&quot;ONGOING&quot; &quot;WAIT&quot; &quot;DELEGATED&quot;)
-                 'regexp &quot;:TG:&quot;))
+   (org-agenda-skip-entry-if &#39;timestamp
+                 &#39;todo &#39;(&#34;ONGOING&#34; &#34;WAIT&#34; &#34;DELEGATED&#34;)
+                 &#39;regexp &#34;:TG:&#34;))
 
 (setq org-agenda-custom-commands
-      '(
+      &#39;(
            ;; Display general agenda for each project.
-        (&quot;A&quot; . &quot;Default agenda view&quot;)
-        (&quot;Aa&quot; &quot;Agenda for all projects&quot;
-         agenda &quot;&quot;
-         ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
-          (org-agenda-overriding-header &quot;Agenda for all projects: &quot;))
-         &quot;~/notes/content-org/org-html-exports/Agenda-All.html&quot;)
+        (&#34;A&#34; . &#34;Default agenda view&#34;)
+        (&#34;Aa&#34; &#34;Agenda for all projects&#34;
+         agenda &#34;&#34;
+         ((org-agenda-skip-function &#39;tjh/org-agenda-skip-only-timestamp-entries)
+          (org-agenda-overriding-header &#34;Agenda for all projects: &#34;))
+         &#34;~/notes/content-org/org-html-exports/Agenda-All.html&#34;)
 
          ;; Display all tasks with deadline.
-         (&quot;D&quot; . &quot;Agenda view for deadlines&quot;)
-         (&quot;Da&quot; &quot;Agenda view for all deadlines&quot;
-          agenda &quot;&quot;
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
-           (org-agenda-overriding-header &quot;All deadlines: &quot;))
-         &quot;~/notes/content-org/org-html-exports/Deadline-All.html&quot;)
+         (&#34;D&#34; . &#34;Agenda view for deadlines&#34;)
+         (&#34;Da&#34; &#34;Agenda view for all deadlines&#34;
+          agenda &#34;&#34;
+          ((org-agenda-skip-function &#39;tjh/org-agenda-skip-not-deadline-entries)
+           (org-agenda-overriding-header &#34;All deadlines: &#34;))
+         &#34;~/notes/content-org/org-html-exports/Deadline-All.html&#34;)
 
          ;; Display all finished tasks.
-         (&quot;F&quot; . &quot;Agenda view for finished tasks&quot;)
-         (&quot;Fa&quot; &quot;Agenda view for all finished tasks&quot;
-          agenda &quot;&quot;
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
-           (org-agenda-overriding-header &quot;All finished tasks: &quot;))
-          &quot;~/notes/content-org/org-html-exports/Done-All.html&quot;)
+         (&#34;F&#34; . &#34;Agenda view for finished tasks&#34;)
+         (&#34;Fa&#34; &#34;Agenda view for all finished tasks&#34;
+          agenda &#34;&#34;
+          ((org-agenda-skip-function &#39;tjh/org-agenda-skip-unfinished-entries)
+           (org-agenda-overriding-header &#34;All finished tasks: &#34;))
+          &#34;~/notes/content-org/org-html-exports/Done-All.html&#34;)
 
          ;; Inbox for displaying unscheduled tasks.
-         (&quot;I&quot; . &quot;Inbox&quot;)
-         (&quot;Ia&quot; &quot;Inbox for all unfinished TODOs&quot;
-          alltodo &quot;&quot;
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
-           (org-agenda-overriding-header &quot;Inbox items: &quot;))
-          &quot;~/notes/content-org/org-html-exports/Inbox-All.html&quot;)
+         (&#34;I&#34; . &#34;Inbox&#34;)
+         (&#34;Ia&#34; &#34;Inbox for all unfinished TODOs&#34;
+          alltodo &#34;&#34;
+          ((org-agenda-skip-function &#39;tjh/org-agenda-skip-scheduled-entries)
+           (org-agenda-overriding-header &#34;Inbox items: &#34;))
+          &#34;~/notes/content-org/org-html-exports/Inbox-All.html&#34;)
         ))
-
 </code></pre><p>更多column view的命令可以参考<sup id=fnref:16><a href=#fn:16 class=footnote-ref role=doc-noteref>16</a></sup></p></li></ul><h2 id=其他参考链接>其他参考链接</h2><p>buffer <a href=http://incf19.com/yynotes/posts/2022-03-17-18-buffer%E7%AE%A1%E7%90%86%E5%92%8Cibuffer%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html#org1ef9b10>http://incf19.com/yynotes/posts/2022-03-17-18-buffer%E7%AE%A1%E7%90%86%E5%92%8Cibuffer%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html#org1ef9b10</a>
 emacslisp <a href=https://kangxiaoning.github.io/post/2021/02/learn-emacs-lisp-part-1/>https://kangxiaoning.github.io/post/2021/02/learn-emacs-lisp-part-1/</a>
 Org-roam User Manual <a href=https://www.orgroam.com/manual.html#C-Compiler>https://www.orgroam.com/manual.html#C-Compiler</a>
@@ -532,4 +524,4 @@ org-roam discourse <a href=https://org-roam.discourse.group>https://org-roam.dis
 补全工具 <a href=https://emacs-helm.github.io/helm/>https://emacs-helm.github.io/helm/</a>
 必备扩展 <a href=https://www.zhihu.com/question/21943533>https://www.zhihu.com/question/21943533</a>
 rss <a href=https://docs.rsshub.app/>https://docs.rsshub.app/</a>
-emacs笔记<a href=https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882>https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882</a></p><section class=footnotes role=doc-endnotes><hr><ol><li id=fn:1 role=doc-endnote><p><a href=https://blog.csdn.net/itguangit/article/details/122192858>https://blog.csdn.net/itguangit/article/details/122192858</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2 role=doc-endnote><p><a href=https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B_%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8_emacs_%E9%85%8D%E7%BD%AE%E7%AF%87>https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B_%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8_emacs_%E9%85%8D%E7%BD%AE%E7%AF%87</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3 role=doc-endnote><p><a href=https://blog.51cto.com/darksun/1355334>https://blog.51cto.com/darksun/1355334</a>&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4 role=doc-endnote><p><a href=https://github.com/abo-abo/org-download/issues/95>https://github.com/abo-abo/org-download/issues/95</a>&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5 role=doc-endnote><p><a href=https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/>https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/</a>&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:6 role=doc-endnote><p><a href=http://www.langdebuqing.com/emacs%20notebook/org-mode%20%E8%A1%A8%E6%A0%BC.html>http://www.langdebuqing.com/emacs%20notebook/org-mode%20%E8%A1%A8%E6%A0%BC.html</a>&#160;<a href=#fnref:6 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:7 role=doc-endnote><p><a href="https://help.jianguoyun.com/?p=2064">https://help.jianguoyun.com/?p=2064</a>&#160;<a href=#fnref:7 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:8 role=doc-endnote><p><a href=https://mp.weixin.qq.com/s/Q2uYIpMl_3yx6dhr5KpsuQ>https://mp.weixin.qq.com/s/Q2uYIpMl_3yx6dhr5KpsuQ</a>&#160;<a href=#fnref:8 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:9 role=doc-endnote><p><a href=https://kundeveloper.com/blog/buffer-files/>https://kundeveloper.com/blog/buffer-files/</a>&#160;<a href=#fnref:9 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:10 role=doc-endnote><p><a href=https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/13>https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/13</a>&#160;<a href=#fnref:10 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:11 role=doc-endnote><p><a href=https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/12>https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/12</a>&#160;<a href=#fnref:11 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:12 role=doc-endnote><p><a href=https://mp.ofweek.com/ic/a556714487227>https://mp.ofweek.com/ic/a556714487227</a>&#160;<a href=#fnref:12 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:13 role=doc-endnote><p><a href=https://zhuanlan.zhihu.com/p/556496150>https://zhuanlan.zhihu.com/p/556496150</a>&#160;<a href=#fnref:13 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:14 role=doc-endnote><p><a href=http://holbrook.github.io/2012/04/14/emacs_orgmode_task.html>http://holbrook.github.io/2012/04/14/emacs_orgmode_task.html</a>&#160;<a href=#fnref:14 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:15 role=doc-endnote><p><a href=https://www.cnblogs.com/quantumman/p/10808374.html>https://www.cnblogs.com/quantumman/p/10808374.html</a>&#160;<a href=#fnref:15 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:16 role=doc-endnote><p><a href=https://orgmode.org/manual/Using-column-view.html>https://orgmode.org/manual/Using-column-view.html</a>&#160;<a href=#fnref:16 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></section></article></html>
+emacs笔记<a href=https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882>https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882</a></p><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p><a href=https://blog.csdn.net/itguangit/article/details/122192858>https://blog.csdn.net/itguangit/article/details/122192858</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p><a href=https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B_%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8_emacs_%E9%85%8D%E7%BD%AE%E7%AF%87>https://coldnight.github.io/dump-brain-with-emacs/posts/20220107175445-%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B_%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8_emacs_%E9%85%8D%E7%BD%AE%E7%AF%87</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p><a href=https://blog.51cto.com/darksun/1355334>https://blog.51cto.com/darksun/1355334</a>&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4><p><a href=https://github.com/abo-abo/org-download/issues/95>https://github.com/abo-abo/org-download/issues/95</a>&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5><p><a href=https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/>https://zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/</a>&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:6><p><a href=http://www.langdebuqing.com/emacs%20notebook/org-mode%20%E8%A1%A8%E6%A0%BC.html>http://www.langdebuqing.com/emacs%20notebook/org-mode%20%E8%A1%A8%E6%A0%BC.html</a>&#160;<a href=#fnref:6 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:7><p><a href="https://help.jianguoyun.com/?p=2064">https://help.jianguoyun.com/?p=2064</a>&#160;<a href=#fnref:7 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:8><p><a href=https://mp.weixin.qq.com/s/Q2uYIpMl_3yx6dhr5KpsuQ>https://mp.weixin.qq.com/s/Q2uYIpMl_3yx6dhr5KpsuQ</a>&#160;<a href=#fnref:8 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:9><p><a href=https://kundeveloper.com/blog/buffer-files/>https://kundeveloper.com/blog/buffer-files/</a>&#160;<a href=#fnref:9 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:10><p><a href=https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/13>https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/13</a>&#160;<a href=#fnref:10 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:11><p><a href=https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/12>https://org-roam.discourse.group/t/how-to-rename-a-note-with-everything-updated-at-the-same-time/300/12</a>&#160;<a href=#fnref:11 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:12><p><a href=https://mp.ofweek.com/ic/a556714487227>https://mp.ofweek.com/ic/a556714487227</a>&#160;<a href=#fnref:12 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:13><p><a href=https://zhuanlan.zhihu.com/p/556496150>https://zhuanlan.zhihu.com/p/556496150</a>&#160;<a href=#fnref:13 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:14><p><a href=http://holbrook.github.io/2012/04/14/emacs_orgmode_task.html>http://holbrook.github.io/2012/04/14/emacs_orgmode_task.html</a>&#160;<a href=#fnref:14 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:15><p><a href=https://www.cnblogs.com/quantumman/p/10808374.html>https://www.cnblogs.com/quantumman/p/10808374.html</a>&#160;<a href=#fnref:15 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:16><p><a href=https://orgmode.org/manual/Using-column-view.html>https://orgmode.org/manual/Using-column-view.html</a>&#160;<a href=#fnref:16 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></article></html>
