@@ -1,0 +1,18 @@
+[ch]
+  title = "高乐高的沙子堆"
+  languageName = "中文"
+  weight = 3 
+  contentdir = "content/ch"
+
+[en]
+  title = "ZDoc"
+  languageName = "English"
+  weight = 1
+  contentdir = "content/en"
+
+[ko]
+  title = "ZDoc"
+  languageName = "English"
+  weight = 2
+  contentdir = "content/ko"
+
