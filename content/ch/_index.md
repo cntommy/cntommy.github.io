@@ -8,7 +8,7 @@ landing:
   height: 500
   image: favicon/android-icon-192x192.png
   title:
-    - 高乐高的沙子堆
+    - 橙皮的沙子堆
   text:
     - 积少成多，聚沙成塔
   titleColor:
