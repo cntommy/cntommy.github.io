@@ -139,28 +139,7 @@ touch init.el   #创建配置文件
 (unless (string-match-p &#34;^Power N/A&#34; (battery))   ; 笔记本上显示电量
   (display-battery-mode 1))
 </code></pre><p>然后再执行M-x eval-buffer，可以看到emacs外观的变化，这样就修改成功了。
-下一步就是安装几个外观的插件，由于straight.el包管理一直报错，折腾一会之后打算还是用内置的package.el来管理包，再之前的文件后追加内容：</p><pre tabindex=0><code class=language-nil data-lang=nil>;; 初始化use-package
-;;{{{ Set up package and use-package
-
-(require &#39;package)
-(add-to-list &#39;package-archives
-             &#39;(&#34;melpa&#34; . &#34;https://melpa.org/packages/&#34;) t)
-(package-initialize)
-
-;; Bootstrap &#39;use-package&#39;
-(eval-after-load &#39;gnutls
-  &#39;(add-to-list &#39;gnutls-trustfiles &#34;/etc/ssl/cert.pem&#34;))
-(unless (package-installed-p &#39;use-package)
-  (package-refresh-contents)
-  (package-install &#39;use-package))
-(eval-when-compile
-  (require &#39;use-package))
-(require &#39;bind-key)
-(setq use-package-always-ensure t)
-
-;;}}}
-
-;; use-package安装
+下一步就是安装几个外观的插件，由于straight.el包管理一直报错，折腾一会之后打算还是用内置的package.el来管理包，再之前的文件后追加内容：</p><pre tabindex=0><code class=language-nil data-lang=nil>;; use-package安装
 (add-to-list &#39;load-path &#34;~/.emacs.d/site-lisp/use-package&#34;)
 (require &#39;use-package)
 
