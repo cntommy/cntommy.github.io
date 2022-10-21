@@ -350,7 +350,6 @@ M-x all-the-icons-install-fonts
 - 帮助
   #+begin_src
     C-h b   查看当前buffer的快捷键
-
   #+end_src
 - 编辑操作
   - 移动
