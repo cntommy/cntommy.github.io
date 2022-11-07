@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       371F14F4-6597-4E9F-8AEB-FD4D2854ECAE
+:END:
+#+TITLE: normalization
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-28 五 17:43]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+* BN
+** 缺点
+1. batch size较小时效果不好
+2. 不适用于可变长序列的训练，如RNN
+3. 训练阶段要保存每个batch的均值和方差
+* layer normalization
+在特征维度归一化

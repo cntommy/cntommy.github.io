@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       0A257875-A8A6-42F4-BAF4-E858815979B5
+:END:
+#+TITLE: manifold流形
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-28 五 17:55]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+
+不是一个形状，而是一个空间
+* 拓扑流形
+局部同胚于欧几里得空间的拓扑空间
+* 流形学习
+** 目的
+重构流形和映射的过程

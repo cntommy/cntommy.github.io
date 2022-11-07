@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-02 三 16:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>整理的文献</title>
+<meta name="author" content="Jun Gao" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">整理的文献</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd6fc0d5">1. survey</a></li>
+<li><a href="#org4160c6b">2. 2022顶会 强化学习 对话 相关文章</a>
+<ul>
+<li><a href="#org335d15a">2.1. 2022 [CASPI] Causal-aware Safe Policy Improvement for Task-oriented DialogueRamachandran Hashimoto</a></li>
+<li><a href="#orgf52eae5">2.2. 2022 CHAIVerma Fu</a></li>
+<li><a href="#orgb7c785e">2.3. 2022 Learning as ConversationCai Wan</a></li>
+<li><a href="#orgd130d15">2.4. 2022 Anti-Overestimation Dialogue Policy Learning for Task-Completion Dialogue SystemTian Yin</a></li>
+<li><a href="#orgc9cb3c3">2.5. 2022 A Versatile Adaptive Curriculum Learning Framework for Task-oriented DialogueZhao Qin</a></li>
+<li><a href="#orge01f3c2">2.6. 2022 Adaptive Natural Language Generation for Task-oriented Dialogue viaOhashi Higashinaka</a></li>
+<li><a href="#orgd6babb5">2.7. 2022 Dynamic Dialogue Policy for Continual Reinforcement LearningGeishauser van Niekerk</a></li>
+<li><a href="#org0847cf1">2.8. 2022 GPT-CRITICJang Lee</a></li>
+<li><a href="#org24a4ec2">2.9. 2022 Asking for KnowledgeLiu Yuan</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6fc0d5" class="outline-2">
+<h2 id="orgd6fc0d5"><span class="section-number-2">1.</span> survey</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+2022 A Survey on Recent Advances and Challenges in Reinforcement Learning MethodsKwan Wang
+</p>
+
+<p>
+A Survey on Reinforcement Learning for Dialogue SystemsGraßl
+</p>
+
+<p>
+2022 Survey on reinforcement learning for language processingUc-Cetina Navarro-Guerrero
+</p>
+</div>
+</div>
+<div id="outline-container-org4160c6b" class="outline-2">
+<h2 id="org4160c6b"><span class="section-number-2">2.</span> 2022顶会 强化学习 对话 相关文章</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org335d15a" class="outline-3">
+<h3 id="org335d15a"><span class="section-number-3">2.1.</span> 2022 [CASPI] Causal-aware Safe Policy Improvement for Task-oriented DialogueRamachandran Hashimoto</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Q1 论文试图解决什么问题？
+离线强化学习从人类对话中学习会有偏差和泛化性差的问题
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+不是
+</p>
+
+<p>
+Q3 这篇文章要验证一个什么科学假设？
+能够通过细粒度的奖励（来自人类对话的意图）和对话策略保护机制 来改善性能和样本效率
+</p>
+
+<p>
+Q4 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？
+ Dataefficient off-policy policy evaluation for reinforcement learning
+</p>
+
+<p>
+Q5 论文中提到的解决方案之关键是什么？
+加入了因果的奖励
+</p>
+
+<p>
+Q7 用于定量评估的数据集是什么？代码有没有开源？
+multiwoz2.0 and convlab
+没有开源
+</p>
+</div>
+</div>
+<div id="outline-container-orgf52eae5" class="outline-3">
+<h3 id="orgf52eae5"><span class="section-number-3">2.2.</span> 2022 CHAIVerma Fu</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Q1 论文试图解决什么问题？
+完全用静态数据集通过离线强化学习训练对话策略，加上预训练模型进行对话生成，实现售货对话系统
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+不是，2017年已经有相关工作，属于 CraigslistBargain task
+</p>
+
+<p>
+Q3 这篇文章要验证一个什么科学假设？
+验证离线强化学习也能够用于训练任务型对话系统
+</p>
+
+<p>
+Q7 用于定量评估的数据集是什么？代码有没有开源？
+没有开源代码
+</p>
+
+<p>
+Q10 下一步呢？有什么工作可以继续深入？
+模型架构不太容易迁移到其他领域
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb7c785e" class="outline-3">
+<h3 id="orgb7c785e"><span class="section-number-3">2.3.</span> 2022 Learning as ConversationCai Wan</h3>
+</div>
+<div id="outline-container-orgd130d15" class="outline-3">
+<h3 id="orgd130d15"><span class="section-number-3">2.4.</span> 2022 Anti-Overestimation Dialogue Policy Learning for Task-Completion Dialogue SystemTian Yin</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Q1 论文试图解决什么问题？
+解决了对话策略模块用强化学习训练中，动作估值与实际不符导致训练不稳定的问题
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+不是
+</p>
+
+<p>
+Q3 这篇文章要验证一个什么科学假设？
+改善动作估值能提高收敛速度和性能
+</p>
+
+<p>
+Q5 论文中提到的解决方案之关键是什么？
+因为训练前期估值可信度低，在训练的前期降低最好动作的估值，随后逐渐提高最好动作估值的权重
+</p>
+
+<p>
+Q7 用于定量评估的数据集是什么？代码有没有开源？
+数据集:
+movie-ticket booking (Li et al., 2016, 2017)
+ restaurant reservation and taxi ordering (Li et al., 2018)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9cb3c3" class="outline-3">
+<h3 id="orgc9cb3c3"><span class="section-number-3">2.5.</span> 2022 A Versatile Adaptive Curriculum Learning Framework for Task-oriented DialogueZhao Qin</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Q1 论文试图解决什么问题？
+解决在强化学习中用课程学习训练对话策略时，对对话任务难度评估不可靠，对话策略对对话过程敏感的问题
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+不是
+</p>
+
+<p>
+Q3 这篇文章要验证一个什么科学假设？
+可以构建一个使用学习经验自动评估对话难度，同时自动选择需要的对话来训练的架构，来提高学习效率
+</p>
+
+<p>
+Q7 用于定量评估的数据集是什么？代码有没有开源？
+ MovieTicket Booking, Restaurant Reservation, Taxi Ordering (Li et al., 2016, 2018)
+ 没开源
+</p>
+
+<p>
+Q10 下一步呢？有什么工作可以继续深入？
+可以在多领域上拓展，如multiwoz
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge01f3c2" class="outline-3">
+<h3 id="orge01f3c2"><span class="section-number-3">2.6.</span> 2022 Adaptive Natural Language Generation for Task-oriented Dialogue viaOhashi Higashinaka</h3>
+</div>
+<div id="outline-container-orgd6babb5" class="outline-3">
+<h3 id="orgd6babb5"><span class="section-number-3">2.7.</span> 2022 Dynamic Dialogue Policy for Continual Reinforcement LearningGeishauser van Niekerk</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+Q1 论文试图解决什么问题？
+为了解决对话系统中对话策略，利用强化学习持续学习的问题
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+</p>
+</div>
+</div>
+<div id="outline-container-org0847cf1" class="outline-3">
+<h3 id="org0847cf1"><span class="section-number-3">2.8.</span> 2022 GPT-CRITICJang Lee</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+Q1 论文试图解决什么问题？
+解决传统强化学习生成的对话质量差的问题，利用离线强化学习对PLM生成的对话进行引导
+</p>
+
+<p>
+Q2 这是否是一个新的问题？
+不是
+</p>
+
+<p>
+Q7 用于定量评估的数据集是什么？代码有没有开源？
+multiwoz2.0 and convlab
+没有开源
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24a4ec2" class="outline-3">
+<h3 id="org24a4ec2"><span class="section-number-3">2.9.</span> 2022 Asking for KnowledgeLiu Yuan</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-11-02 三 15:12</p>
+<p class="author">Author: Jun Gao</p>
+<p class="date">Created: 2022-11-02 三 16:19</p>
+</div>
+</body>
+</html>

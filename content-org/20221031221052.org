@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       AA22B143-E5FD-43A7-BAED-281BB9BFBA03
+:END:
+#+TITLE: screen
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-31 一 22:10]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+
+防止终端因为电脑挂起远程连接关闭
+#+begin_src
+screen -r <name>   进入特定session
+C-a-d   挂起session
+exit   退出session
+screen -ls   列出所有session
+jobs   查看挂起的任务
+fg   挂起的任务放到前台
+screen -S <name>   创建session
+
+#+end_src

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="292px" preserveAspectRatio="none" style="width:748px;height:292px;background:#FFFFFF;" version="1.1" viewBox="0 0 748 292" width="748px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="21.0146" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="76" x="5" y="129.5"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="41" x="10" y="145.5752">turns</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="61" y="145.5752">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="56" x2="56" y1="129.5" y2="150.5146"/><rect fill="none" height="21.0146" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="76" x="5" y="129.5"/><rect fill="#FFFFFF" height="42.0293" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="25" x="118" y="119"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="123" y="135.0752">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="118" x2="143" y1="140.0146" y2="140.0146"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="123" y="156.0898">   </text><rect fill="none" height="42.0293" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="25" x="118" y="119"/><rect fill="#FFFFFF" height="122.0879" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="403" x="183" y="5"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="58" x="188" y="21.0752">turn_id</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="139" x="307" y="21.0752">insurance_005_000</text><line style="stroke:#000000;stroke-width:1.0;" x1="302" x2="302" y1="5" y2="26.0146"/><line style="stroke:#000000;stroke-width:1.0;" x1="183" x2="586" y1="26.0146" y2="26.0146"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="102" x="188" y="42.0898">speaker_role</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="307" y="42.0898">Agent</text><line style="stroke:#000000;stroke-width:1.0;" x1="302" x2="302" y1="26.0146" y2="47.0293"/><line style="stroke:#000000;stroke-width:1.0;" x1="183" x2="586" y1="47.0293" y2="47.0293"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="74" x="188" y="63.1045">utterance</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="269" x="307" y="63.1045">Hi. Thank you for holding. My name is</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="62" x="307" y="80.1191">Rebecca.</text><line style="stroke:#000000;stroke-width:1.0;" x1="302" x2="302" y1="47.0293" y2="85.0586"/><line style="stroke:#000000;stroke-width:1.0;" x1="183" x2="586" y1="85.0586" y2="85.0586"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="109" x="188" y="101.1338">dialogue_acts</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="307" y="101.1338">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="302" x2="302" y1="85.0586" y2="106.0732"/><line style="stroke:#000000;stroke-width:1.0;" x1="183" x2="586" y1="106.0732" y2="106.0732"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="54" x="188" y="122.1484">intents</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="307" y="122.1484">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="302" x2="302" y1="106.0732" y2="127.0879"/><rect fill="none" height="122.0879" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="403" x="183" y="5"/><rect fill="#FFFFFF" height="15" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="30" x="671.5" y="78"/><rect fill="none" height="15" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="30" x="671.5" y="78"/><rect fill="#FFFFFF" height="15" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="30" x="671.5" y="112"/><rect fill="none" height="15" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="30" x="671.5" y="112"/><rect fill="#FFFFFF" height="139.1025" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="409" x="180" y="145.5"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="58" x="185" y="161.5752">turn_id</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="139" x="304" y="161.5752">insurance_005_001</text><line style="stroke:#000000;stroke-width:1.0;" x1="299" x2="299" y1="145.5" y2="166.5146"/><line style="stroke:#000000;stroke-width:1.0;" x1="180" x2="589" y1="166.5146" y2="166.5146"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="102" x="185" y="182.5898">speaker_role</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="68" x="304" y="182.5898">Customer</text><line style="stroke:#000000;stroke-width:1.0;" x1="299" x2="299" y1="166.5146" y2="187.5293"/><line style="stroke:#000000;stroke-width:1.0;" x1="180" x2="589" y1="187.5293" y2="187.5293"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="74" x="185" y="203.6045">utterance</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="275" x="304" y="203.6045">Hi Rebecca, it's Brad. I called earlier to</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="268" x="304" y="220.6191">make enquiries about getting my kids</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="174" x="304" y="237.6338">added to my policy plan.</text><line style="stroke:#000000;stroke-width:1.0;" x1="299" x2="299" y1="187.5293" y2="242.5732"/><line style="stroke:#000000;stroke-width:1.0;" x1="180" x2="589" y1="242.5732" y2="242.5732"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="109" x="185" y="258.6484">dialogue_acts</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="304" y="258.6484">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="299" x2="299" y1="242.5732" y2="263.5879"/><line style="stroke:#000000;stroke-width:1.0;" x1="180" x2="589" y1="263.5879" y2="263.5879"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="54" x="185" y="279.6631">intents</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="15" x="304" y="279.6631">   </text><line style="stroke:#000000;stroke-width:1.0;" x1="299" x2="299" y1="263.5879" y2="284.6025"/><rect fill="none" height="139.1025" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="409" x="180" y="145.5"/><rect fill="#FFFFFF" height="15" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="30" x="671.5" y="230"/><rect fill="none" height="15" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="30" x="671.5" y="230"/><rect fill="#FFFFFF" height="21.0146" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="115" x="626" y="264.5"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="105" x="631" y="280.5752">AddDependent</text><rect fill="none" height="21.0146" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="115" x="626" y="264.5"/><path d="M575,90 L588,90 C614.4587,90 645.0258,88.432 664.185,87.2594 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M664.3803,90.3418 L666.4968,87.113 L663.9898,84.1771 L671.891,86.7712 L664.3803,90.3418 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="575" cy="90" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M575,115 L588,115 C614.4719,115 645.0357,116.96 664.1906,118.4257 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M663.9465,121.5073 L666.5018,118.6088 L664.4347,115.3441 L671.8946,119.0359 L663.9465,121.5073 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="575" cy="115" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M131,129 L144,129 C154.3994,129 164.9716,128.4398 175.5916,127.425 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M175.9187,130.5209 L177.9135,127.1797 L175.2645,124.3291 L183.3313,126.6073 L175.9187,130.5209 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="131" cy="129" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M577,243 L590,243 C615.7753,243 645.511,241.0612 664.2805,239.5983 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M664.5247,242.6238 L666.5496,239.4151 L664.0363,236.5727 L671.8443,238.9878 L664.5247,242.6238 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="577" cy="243" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M577,271 L590,271 C599.3089,271 609.137,271.2025 618.7794,271.5164 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M618.6699,274.5883 L621.0834,271.5986 L618.889,268.4445 L626.4592,271.7903 L618.6699,274.5883 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="577" cy="271" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M131,151 L144,151 C153.4424,151 163.0253,151.4682 172.6556,152.3246 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M172.3482,155.4173 L174.9751,152.5551 L172.963,149.2319 L180.3873,153.093 L172.3482,155.4173 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="131" cy="151" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><path d="M69,140 L82,140 C91.3464,140 101.7164,140 110.4192,140 " fill="none" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M110.4192,143.0981 L112.7428,140 L110.4192,136.9019 L118.1644,140 L110.4192,143.0981 " fill="#000000" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="69" cy="140" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[a3849fd4d1cdddd6da253e7114f85c92]
+@startjson 
+!theme plain 
+skinparam defaultFontName somefont
+{"turns": [{"turn_id": "insurance_005_000", "speaker_role": "Agent", "utterance": "Hi. Thank you for holding. My name is Rebecca.", "dialogue_acts": [], "intents": []}, {"turn_id": "insurance_005_001", "speaker_role": "Customer", "utterance": "Hi Rebecca, it's Brad. I called earlier to make enquiries about getting my kids added to my policy plan.", "dialogue_acts": [], "intents": ["AddDependent"]}]}
+@endjson
+
+@startjson 
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+skinparam defaultFontName somefont
+{"turns": [{"turn_id": "insurance_005_000", "speaker_role": "Agent", "utterance": "Hi. Thank you for holding. My name is Rebecca.", "dialogue_acts": [], "intents": []}, {"turn_id": "insurance_005_001", "speaker_role": "Customer", "utterance": "Hi Rebecca, it's Brad. I called earlier to make enquiries about getting my kids added to my policy plan.", "dialogue_acts": [], "intents": ["AddDependent"]}]}
+@endjson
+
+PlantUML version 1.2022.10(Sat Oct 22 00:50:02 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: US-ASCII
+Language: zh
+Country: CN
+--></g></svg>

@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       CBED1FA3-3B21-4BD8-B4FE-5CA7739C4907
+:END:
+#+TITLE: basic concept
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-28 五 17:34]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+
+[[id:DC924255-BB3F-48AE-98C1-7FEB6DFF9876][representation learning]]
+
+[[id:371F14F4-6597-4E9F-8AEB-FD4D2854ECAE][normalization]]
+
+* QR分解
+将矩阵分解为[[id:B7190DDD-0288-460A-9FC1-52296FE95172][正交矩阵]]Q和一个上三角矩阵的乘积形式
+
+* LU分解
+将矩阵分解为一个下三角矩阵与上三角矩阵的乘积形式
+
+* [[id:0A257875-A8A6-42F4-BAF4-E858815979B5][manifold流形]]
+
+* softmax
+
+* sigmoid
+
+* 相对熵
+KL散度，表示同一随机变量的不同分布之间的距离
+
+* 交叉熵
+描述用分布 $q(x)$ 表示 $p(x)$ 的困难程度，计算为 $p$ 的熵加上 $(p||q)$ KL散度
+
+*

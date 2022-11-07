@@ -6,8 +6,8 @@
 #+DATE: [2022-10-15 六 23:17]
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: notes
-* TODO [#A] 佩佩师姐-比赛idea介绍
-* TODO [#B] 何老师-对话系统ppt
+* DONE [#B] 何老师-对话系统ppt
+CLOSED: [2022-10-26 三 20:19]
 * TODO reorganize onenote
 * 踩坑经验交流
 ** 王小捷组
@@ -15,3 +15,20 @@
 ** 佩佩师姐和项老师
 ** 大宝
 ** 申磊
+* TODO 强化学习顶会
+* MLNLP研讨会
+SCHEDULED: <2022-10-30 日 09:00>
+http://live.bilibili.com/23872620
+* 滴滴合作项目
+** [#A] 给项老师调研材料
+SCHEDULED: <2022-11-02 三>
+*** ppt file:/Users/didi/Desktop/reinforcemen*
+*** [[id:CE044C83-27CD-42B0-A2A8-E100C6D799E1][reinforcement-learning-in-dialogue-system]]
+*** [[id:D46A1353-3682-49B3-B1E1-C7663199842A][2022-dialogue-paper]]
+*** TODO paper list
+
+* [#A] 专利
+** 找到模板
+* 研究方向梳理
+** TODO [#A] 佩佩师姐-研究方向
+* TODO [#B] [[id:44CF80E3-73D7-4784-B90D-99A61E951D0F][复盘dstc11]]

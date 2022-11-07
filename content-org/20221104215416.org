@@ -1,0 +1,47 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: INTENT INDUCE WITH SCCL AND OUT-DOMAIN DATA AUGMENTATION
+#+date: <2022-11-04 五>
+#+author: Jun Gao
+#+email: didi@DIDI-FVFYQ1NDHV2D
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+#+cite_export:
+
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: []
+#+OPTIONS: H:2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+* Introduction
+** dstc11
+https://drive.google.com/file/d/1itlby2Ypq3sRVtOY1alr3ygjPZZdB2TT/view
+** sccl
+SCCL(supporting clustering with contrastive learning) is a deep clustering algorithm which can learning more adequate representation of short context. By using Contrastive Learning, same samples will be pull together while different ones will be pushing apart.
+
+#+DOWNLOADED: screenshot @ 2022-11-04 23:05:15
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:../images/20221104-230515_screenshot.png]]
+* our work
+** filtering high quality utterances with statistic rule or hdbscan
+In open intent induction, we will not have acess to the ground-truth utterances with intents, so need to filter out noise utterances. A tradition way is to use clustering algorithms, like hdbscan, but in this task, we find a more effective way to select high quality utterances, that is statistic rules. Specificlly, we count the highest frequency bi-gram phrase before the utterances in development dataset and find it domain-agnostic, thus we migrate the rule to test dataset and obtain high quality utterances.
+
+For example, if "insurance_005_001" is a high quality utterance, "name is" is a bi-gram phrase before it.
+
+#+DOWNLOADED: screenshot @ 2022-11-04 23:46:22
+#+ATTR_LATEX: :width 0.75\textwidth
+[[file:../images/20221104-234622_screenshot.png]]
+
+** data augmentation using out-domain data
+After getting high quality utterances for sccl(original input in figure), besides drop-out augmentation in sccl, we can augment the original input by simcse using out-domain data(which has similar utterances in original input). Then we can train sccl normally. After getting clustering results, we have to remove the augmentation data added in previous step.
+#+DOWNLOADED: screenshot @ 2022-11-04 23:56:04
+[[file:../images/20221104-235604_screenshot.png]]
+
+** results
+[[file:2.png]]

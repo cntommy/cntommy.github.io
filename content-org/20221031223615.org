@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       0339CBB5-1CF8-48FB-9610-2364206DDC26
+:END:
+#+TITLE: reinforcement learning zong
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-31 一 22:36]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs

@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       AF3795B1-1E87-44F7-9C8E-357AD9768CEA
+:END:
+#+TITLE: matplotlib
+#+AUTHOR: Jun Gao
+#+DATE: [2022-11-04 五 11:12]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+* 导入
+import matplotlib.pyplot as plt
+* 坐标轴
+plt.xlabel()
+* 图例
+* 标题
+plt.title()
+* 绘图
+plt.figure(figsize=(4,2))

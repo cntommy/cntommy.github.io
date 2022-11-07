@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       11C7BD99-DCD9-4837-9541-0E0CD1005095
+:END:
+#+TITLE: latex
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-30 日 22:58]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+* 编译
+** XeLaTeX
+* emacs扩展包
+** AUCTeX
+* 语法
+https://zhuanlan.zhihu.com/p/52347414

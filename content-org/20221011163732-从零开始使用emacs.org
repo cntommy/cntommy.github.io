@@ -19,8 +19,14 @@
 | emacs    | 支持     | 全局 | 好      | 支持     | 陡峭     | 全集      | 支持         |
 | logseq   | 支持     | 全局 | 会有bug | ？       | 稍简单   | 子集      | 不支持       |
 | obsidian | 不支持   | 文件 | 好      | ？       | 稍简单   | 子集      | 不支持       |
+* 三种安装emacs的方式
+按照对新手的友好程度划分应该是：spacemacs>GNU emacs(purcell配置>GNU emacs(自己配置)。
+spacemacs据说是对vim用户特别适合，新手下载了也能直接用，但是我刚开始不知道所以就没进行尝试；
+我最开始是走的GNU emacs（自己配置）这条路，配环境大概花了一周的时间，优化又花了一周的时间，发现还是有用着不顺手的地方；
+知道我看到了有人推荐purcell大神的配置，下载下来发现基本的功能都配置好了，虽然好多地方也要自己优化，但是工作量少多了；
+下面我介绍一下后两种的安装方式。
 
-* 软件安装
+** GNU emacs（自己配置）
 首先使用brew命令安装emacs,'--cask'表示安装带有图形界面的软件，如果安装比较慢可以考虑给brew换国内源[fn:12]
 #+begin_src
 brew update
@@ -34,11 +40,11 @@ cd ~/.emacs.d
 touch init.el   #创建配置文件
 #+end_src
 接着打开emacs，输入C-x C-f，会等待输入打开的文件，输入~/.emacs.d/init.el <RET>，输入命令刷新安装包列表
-#+begin_src 
+#+begin_src
 M-x package-refresh-contents
 #+end_src
 再把下面的配置代码粘贴到文件中
-#+begin_src
+#+begin_src emacs-lisp
 ;; 窗口最大化
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -175,7 +181,7 @@ M-x package-refresh-contents
 #+end_src
 然后再执行M-x eval-buffer，可以看到emacs外观的变化，这样就修改成功了。
 下一步就是安装几个外观的插件，由于straight.el包管理一直报错，折腾一会之后打算还是用内置的package.el来管理包，再之前的文件后追加内容：
-#+begin_src 
+#+begin_src emacs-lisp
 ;; use-package安装
 (add-to-list 'load-path "~/.emacs.d/site-lisp/use-package")
 (require 'use-package)
@@ -309,6 +315,20 @@ M-x all-the-icons-install-fonts
 就能开始愉快的做笔记啦！
 
 主要参考了[fn:14]
+** GNU emacs(purcell 配置)
+按照上一种方法，用brew安装好emacs之后，就没有那么复杂了，只要将原有的 =.emacs.d= 目录替换为purcell的就可以：
+#+begin_src 
+$ cd ~
+$ mv .emacs.d .emacs.d.bak
+$ git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
+#+end_src
+然后打开emacs，等待几分钟就能快速得到一个好用的环境啦，但是估计得熟悉一下。
+看了界面我感觉还是挺顺眼的，就没有换别的主题，各种补全的也比我之前自己配的好用，下面附一张图：
+
+#+DOWNLOADED: screenshot @ 2022-10-26 22:04:46
+[[file:../images/20221026-220446_screenshot.png]]
+之后就是漫漫的优化之路了，我还没有完全优化好，所以就没把后续写上来了，但是现在已经不影响使用了。
+
 * 常用功能
 我的需求是用来做科研笔记，同时可能记录一些日常，接下来从软件的界面到功能进行记录：
 - 软件界面及相关术语
@@ -318,6 +338,7 @@ M-x all-the-icons-install-fonts
   | frame      | 用了感觉是新的窗口的意思      |
   | window     | 特定frame下的子窗口，可以嵌套 |
   | minibuffer | 底部输入指令的区域                     |
+
 - window&frame操作
   #+begin_src
     全屏当前frame？
@@ -335,6 +356,22 @@ M-x all-the-icons-install-fonts
     C-h b   查看当前buffer的快捷键
   #+end_src
 - 编辑操作
+  #+begin_src
+    C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
+    C-@   标记选择
+    C-w   剪切
+    M-w   复制
+    C-y   粘贴   M-y   替换粘贴内容为更早的kill
+    C-/   撤销 
+    C-q   输入控制字符，如TAB
+    M-x replace-s<RET>before<RET>after<RET>   替换光标后的所有字符串
+    M-x xxx-mode   切换为xxx major/minor mode
+    C-s   查找   全局查找？
+    C-x n s   聚焦当前字内容
+    C-x n w   退出聚焦
+    C-c C-x f   当前point添加脚注，并跳转
+
+  #+end_src
   - 移动
     #+begin_src
     C-f   后一个字符
@@ -353,37 +390,49 @@ M-x all-the-icons-install-fonts
     C-c C-f   移动到同等级的下一个标题
     C-c C-x C-n   移动到下一个链接
     #+end_src
-  
-  #+begin_src
-    C-a C-k C-k   删除一行（不留空行）   C-u 3 C-k   删除3行（不留空行）
-    C-@   标记选择
-    C-w   剪切
-    M-w   复制
-    C-y   粘贴   M-y   替换粘贴内容为更早的kill
-    C-/   撤销 
-    C-q   输入控制字符，如TAB
-    M-x replace-s<RET>before<RET>after<RET>   替换光标后的所有字符串
-    M-x xxx-mode   切换为xxx major/minor mode
-    C-s   查找   全局查找？
-    C-x n s   聚焦当前字内容
-    C-x n w   退出聚焦
-    C-c C-x f   当前point添加脚注，并跳转
-
-  #+end_src
-- 目录&文件操作[fn:13]
-  #+begin_src
-    M-S-d   浏览特定目录
-    C-x C-f   打开文件
-    C-x C-s   保存文件
-    C-x s   询问每个和file关联的buffer要不要保存
-    M-x recover-this-file<RET>   恢复文件   M-x recover-file<RET>filename<RET>
-    M-x ediff-files   比较两个文件   j   跳到第一个差异处   <SPA>   下一个差异处
-  #+end_src
+  - 代码操作
+    #+begin_src 
+C-c '   在新窗口中打开代码块
+C-c C-k   关闭代码块的编辑窗口
+<s <RET>   代码块自动生成，需要(require 'org-tempo)
+    #+end_src
+    babel[fn:20]
+** 标题操作[fn:18]
+#+begin_src 
+M-RET   插入同级标题
+M-S-RET   插入同级TODO标题
+M-LEFT/RIGHT   将标题升级/降级
+M-S-LEFT/RIGHT   将子树升级/降级
+M-S-UP/DOWN   将子树上/下移
+C-c C-w   将子树或区域移到另一标题（跨缓冲区）
+#+end_src
+** 目录&文件操作[fn:13]
+#+begin_src
+  M-S-d   浏览特定目录
+  C-x C-f   打开文件
+  C-x C-s   保存文件
+  C-x s   询问每个和file关联的buffer要不要保存
+  M-x recover-this-file<RET>   恢复文件   M-x recover-file<RET>filename<RET>
+  M-x ediff-files   比较两个文件   j   跳到第一个差异处   <SPA>   下一个差异处
+#+end_src
+dired[fn:19]
+#+begin_src
+;; 目录树
+(package-install 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+#+end_src
+#+begin_src
+    U   进入上一级目录
+    g   刷新
+    C-c C-n   创建目录或文件
+    C-c C-d   删除目录或文件
+    C-c C-r   重命名目录或文件
+#+end_src
 
   http://blog.lujun9972.win/blog/2016/12/10/emacs%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8--dired%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/
 - 截图、插入图片并显示[fn:pic1][fn:pic2]
   首先在init中配置org-download，然后用brew安装pngpaste，就能实现C-M-y快捷键截图插入，同时保存在"~/notes/images"目录下
-#+begin_src 
+  #+begin_src 
 ;; 图片管理
 (package-install 'org-download)
 (use-package org-download
@@ -402,7 +451,7 @@ M-x all-the-icons-install-fonts
     (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
   :bind
   ("C-M-y" . org-download-screenshot))
-#+end_src
+  #+end_src
 图片插到文中之后，还可以通过C-c C-x C-v设置显示的方式是连接还是原图
 - node相关操作
   #+begin_src
@@ -418,6 +467,12 @@ M-x all-the-icons-install-fonts
 主要参考了以下博客：
 [[https://www.zmonster.me/2015/07/12/org-mode-introduction.html][org-mode]]
 - 表格操作
+  #+begin_src 
+C-c '   在buffer中编辑
+C－u C-c C-c   计算整个表格
+@row$colum=1;%d   单元格保留整数
+
+  #+end_src
   参考[fn:9]
 - 文献管理
   看了网上的推荐之后，决定试一试zotero+zotxt-emacs
@@ -451,9 +506,266 @@ M-x all-the-icons-install-fonts
   #+end_src
   但是这种方法比较麻烦，适合低频率使用，于是选择syncthing作为日常的同步方案
   除此之外还有别的同步方案：https://emacs-china.org/t/org-files-git/19461
+** 进度管理
+为了对不同的项目进度进行概览，准备试一下org-mode的任务管理用法，同时记录一些快捷键，参考了这两篇教程[fn:6] [fn:8]
+#+begin_src
+  C-c C-t   改变标题任务状态标记   S-LEFT/RIGHT
+  C-c C-w   将当前光标标题及子树移到更高级标题下
+  S-UP/DOWN   改变任务优先级
+
+  [%]   [/]   跟踪当前任务下子任务的情况
+  M-S-<RET>   插入带复选框的同级列表
+  C-c C-c   列表：改变复选框状态/headline：设置标签
+
+  M-S-<RET>   增加一个子项   C-S-<RET>   在当前子项内容后增加子项
+  C-c /   大纲检索（状态或关键词）
+  C-c <   输入当前日期时间戳
+  C-c >   查看日历   S-LEFT/RIGHT/UP/DOWN   调整日期
+  C-c !   仅输入日期
+  --   定义时间段
+  C-c C-y   计算时间间隔
+  C-c C-s +1d 10am   设定任务计划时间
+  C-c C-d   设定任务deadline
+
+  C-c a t   进入全局TODO列表   t   改变任务状态   <RET>跳到源文件   跳回？
+  C-c a a   进入日程表视图   l   显示日志(完成时间）
+  C-c C-x C-c   打开column view   g   刷新
+  C-c C-c   q   退出column view
+#+end_src
+首先修改一下定义任务状态的关键词，在init中添加
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+'((sequence "TODO(t)" "ONGOING(o)" "MAYBE(m)" "WAIT(w)" "DELEGATED(d)" "|"
+    "DONE(f)" "CANCELLED(c)" "STUCK(s)")))
+#+end_src
+然后重启一下emacs就能生效，如果要增加时间戳在关键字后面加！就行，如"TODO(t！)"，如果需要增加切换状态说明，则加@（都加用/分隔）
+为了方便全局的任务管理，可以根据自己的目录配置全局的清单和快捷键
+#+begin_src emacs-lisp
+;; 配置全局任务文件清单和快捷键
+(setq org-agenda-files (list "~/notes/content-org/"))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+;; 禁用任务组标签继承
+(setq org-tags-exclude-from-inheritance '("TG"))
+#+end_src
+接下来修改视图的显示
+#+begin_src
+;; Skip entries which only have timestamp but no TODO keywords.
+(defun tjh/org-agenda-skip-only-timestamp-entries ()
+(org-agenda-skip-entry-if 'nottodo 'any))
+
+;; Skip entries which are not deadlines.
+(defun tjh/org-agenda-skip-not-deadline-entries ()
+ (org-agenda-skip-entry-if 'notdeadline))
+
+;; Skip entries which are not finished.
+(defun tjh/org-agenda-skip-unfinished-entries ()
+ (org-agenda-skip-entry-if 'nottodo '("DONE")))
+
+;; Skip unscheduled entries.
+(defun tjh/org-agenda-skip-scheduled-entries ()
+ (org-agenda-skip-entry-if 'timestamp
+               'todo '("ONGOING" "WAIT" "DELEGATED")
+               'regexp ":TG:"))
+
+(setq org-agenda-custom-commands
+    '(
+         ;; Display general agenda for each project.
+      ("A" . "Default agenda view")
+      ("Aa" "Agenda for all projects"
+       agenda ""
+       ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
+        (org-agenda-overriding-header "Agenda for all projects: "))
+       "~/notes/content-org/org-html-exports/Agenda-All.html")
+
+       ;; Display all tasks with deadline.
+       ("D" . "Agenda view for deadlines")
+       ("Da" "Agenda view for all deadlines"
+        agenda ""
+        ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
+         (org-agenda-overriding-header "All deadlines: "))
+       "~/notes/content-org/org-html-exports/Deadline-All.html")
+
+       ;; Display all finished tasks.
+       ("F" . "Agenda view for finished tasks")
+       ("Fa" "Agenda view for all finished tasks"
+        agenda ""
+        ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
+         (org-agenda-overriding-header "All finished tasks: "))
+        "~/notes/content-org/org-html-exports/Done-All.html")      
+
+       ;; Inbox for displaying unscheduled tasks.
+       ("I" . "Inbox")
+       ("Ia" "Inbox for all unfinished TODOs"
+        alltodo ""
+        ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
+         (org-agenda-overriding-header "Inbox items: "))
+        "~/notes/content-org/org-html-exports/Inbox-All.html")
+      ))
+
+#+end_src
+更多column view的命令可以参考[fn:7]
+
+* 进阶功能
+** hugo生成博客
+1. 安装插件
+   为了把笔记导出到网站，需要用到[[https://github.com/kaushalmodi/ox-hugo][ox-hugo]]插件，在init.el中添加
+   #+begin_src 
+ (use-package ox-hugo
+   :ensure t   ;Auto-install the package from Melpa
+   :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+   :after ox)
+   #+end_src
+   然后执行 =M-x eval-buffer=
+   现在就可以写一篇用于博客发布的org笔记了，写完之后需要转化为 =.md= 文件才能发布到博客，因为我需要导出到博客的笔记暂时还比较少，打算先用单独添加的方法，只需在需要发布的org文件结尾添加
+   #+begin_src 
+ ,* COMMENT Local Variables :ARCHIVE:
+ # Local Variables:
+ # eval: (org-hugo-auto-export-mode)
+ # End:
+
+   #+end_src
+  如果想要对所有的org文件都执行自动保存用于发布，可以参考[fn:15]。
+  接下来执行 =C-x C-s= 保存文件就能在minibuffer看到文件已导出到 =.md= 文件（如果没有重新打开一下emacs）
+2. 创建git仓库
+   这一步是为了之后能用到[[https://docs.github.com/cn/pages][github pages]]进行发布。首先要安装git，然后到github新建一个名为 =username.github.io= 的仓库，其中 =username= 是你自己的github用户名，如我的[[https://cntommy.github.io/docs/][cntommy.github.io]]
+   #+begin_src
+     $ cd ~/notes
+     $ git init   #进行仓库初始化
+     $ git remote add origin https://github.com/<username>/<username>.github.io.git  
+     $ git add . && git commit -m 'init'
+     $ git push origin main
+
+   #+end_src
+   然后配置 =github action= 进行自动化发布
+   #+begin_src
+       $ cd ~/notes
+       $ mkdir -p .github/workflows
+
+     #+end_src
+     打开emacs执行 =C-x C-f ~/notes/.github/workflows/main.yml RET= ，把下面的内容[fn:16]粘贴进去，按 =C-x C-s= 保存
+     #+begin_src 
+ name: github pages
+
+ on:
+   push:
+     branches:
+       - main  # Set a branch to deploy
+   pull_request:
+
+ jobs:
+   deploy:
+     runs-on: ubuntu-22.04
+     steps:
+       - uses: actions/checkout@v3
+         with:
+           submodules: true  # Fetch Hugo themes (true OR recursive)
+           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+       - name: Setup Hugo
+         uses: peaceiris/actions-hugo@v2
+         with:
+           hugo-version: 'latest'
+           # extended: true
+
+       - name: Build
+         run: hugo --minify
+
+       - name: Deploy
+         uses: peaceiris/actions-gh-pages@v3
+         if: github.ref == 'refs/heads/main'
+         with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./public
+
+     #+end_src
+     接下来再执行 =C-x C-f ~/notes/config.toml RET= 调整配置，并保存
+     #+begin_src
+       baseURL = "http://username.github.io/"     # 替换 username 为你自己的用户名
+     #+end_src
+     最后打开github对应仓库的setting，把pages的branch修改为hugo默认的gh-pages
+     #+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 21:12:58
+     [[file:../images/screenshot20221021-211258_.png]]
+3. 配置主题
+      在网上看到了比较喜欢的[[https://zzo-docs.vercel.app][zdoc]]主题，颜值和实用性都比较高，就是配置起来会稍微麻烦一点，预览图如下所示，接下来开搞！
+      #+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 20:41:30
+      [[file:../images/screenshot20221021-204130_.png]]
+      首先在需要给当前的仓库添加主题子模块
+      #+begin_src
+        $ cd ~/notes
+        $ git submodule add https://github.com/zzossig/hugo-theme-zdoc.git themes/zdoc
+      #+end_src
+      然后把 =zdoc/exampleSite/= 目录下的四个文件夹拷贝到hugo的项目根目录 =~/notes= 下，再在 =~/notes/content/en/docs/= 目录中添加 =.md= 笔记文件
+      然后提交配置文件和笔记
+      #+begin_src
+        $ git add .
+        $ git commit -m 'add workflow'
+        $ git push origin master
+      #+end_src
+      就能通过 =username.github.io= 访问了~
+      这块内容主要参考了这几篇文章[fn:17][fn:14]
+4. 报错解决
+   [[id:705CAC43-34FC-42DC-8021-7A27CD90DFB5][hugo启动报错]]
+   
+** 思维导图
+之前用的是xmind，虽然好看但是编辑起来不是纯文本，而且不是正版用户还老是挂着一个试用期，就想找一下有没有能替代xmind的emacs插件
+目前的需求就是生成类似xmind的思维导图，调研了一圈总结如下
+| 插件           | 优缺点                 |
+|----------------+------------------------|
+| org-mind-map   | 比较丑，很久没有维护了 |
+| eaf-mindmap    | 功能强大，但是比较繁琐 |
+| org-brain      | 文本形式的图不直观     |
+| org-graph-view | 目前感觉还比较简陋     |
+| plantuml-emacs | 功能简单实用，但是可能有些bug       |
+
+对比下来打算暂时先用 plantuml-emacs，因为上手比较快，之后如果有其他需求再研究
+** RSS
+首先安装crul
+#+begin_src
+brew install crul
+#+end_src
+然后安装elfeed，同时设置rss源[fn:10]
+#+begin_src
+;; elfeed for rss
+(package-install 'elfeed)
+(setq elfeed-feeds '("http://iccircle.com/feed"))
+#+end_src
+然后就能用M-x elfeed打开使用，其他的一些命令如下
+#+begin_src
+M-x elfeed-add-feed   添加源
+M-x elfeed-update   更新源
+M-x elfeed-search-set-filter   修改过滤条件
+#+end_src
+用的过程中发现了问题，没法更新，原因是很多源都不能用了，下面是一些目前还能用的
+#+begin_src
+("https://www.zhihu.com/rss" zhihu)
+;("http://feeds.feedburner.com/zhihu-daily" news)
+("https://planet.emacslife.com/atom.xml" emacs)
+;("https://www.reddit.com/r/emacs.rss" emacs)
+;;("https://www.reddit.com/r/orgmode.rss" emacs)
+("https://rsshub.app/rsshub/rss" rss)
+("https://rsshub.app/twitter/user/DIYgod" tw)
+#+end_src
+同时还可添加的一些源
+#+begin_src
+Link: https://docs.rsshub.app/new-media.html#wei-xin
+https://www.kexue.fm/feed
+#+end_src
+elfeed-org用于管理rss源[fn:11]，但是安装出现了一些问题
+elfeed-summary用于提供干净的浏览界面
+#+begin_src
+M-x elfeed-summary   打开浏览界面
+R   刷新源
+U   批量标记为已读
+M-RET   阅读同时保留未读
+u   是否只显示未读
+#+end_src
 
 * 其他优化
 - cpu占用高
+  偶然有一次发现cpu占用很高，但是最后查不出是什么原因，下面的方法是修改历史缓存，暂时还用不到
   #+begin_src
 (setq history-length 100)
 (put 'minibuffer-history 'history-length 50)
@@ -479,289 +791,47 @@ M-x all-the-icons-install-fonts
   发现每次db都不能自动同步，应该是需要打开M-x org-roam-db-autosync-mode来自动同步
 - 文件名和TITLE对齐
   如果文件名会插入第一次设置的TITLE，那么后续修改起来会很麻烦，如果文件名默认不带TITLE，那后续就不会有这个麻烦了，而且这个不影响node的索引。[fn:4]
-* 待实现的需求
-- mind map
-- 从arxiv自动订阅带关键词的论文
-- ppt制作
-  https://www.youtube.com/watch?v=vz9aLmxYJB0
-- hugo生成博客
-  1. 安装插件
-     为了把笔记导出到网站，需要用到[[https://github.com/kaushalmodi/ox-hugo][ox-hugo]]插件，在init.el中添加
-  #+begin_src 
-(use-package ox-hugo
-  :ensure t   ;Auto-install the package from Melpa
-  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
-  :after ox)
-  #+end_src
-  然后执行 =M-x eval-buffer=
-  现在就可以写一篇用于博客发布的org笔记了，写完之后需要转化为 =.md= 文件才能发布到博客，因为我需要导出到博客的笔记暂时还比较少，打算先用单独添加的方法，只需在需要发布的org文件结尾添加
-  #+begin_src 
-,* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# eval: (org-hugo-auto-export-mode)
-# End:
-
-  #+end_src
- 如果想要对所有的org文件都执行自动保存用于发布，可以参考[fn:15]。
- 接下来执行 =C-x C-s= 保存文件就能在minibuffer看到文件已导出到 =.md= 文件（如果没有重新打开一下emacs）
- 2. 创建git仓库
-    这一步是为了之后能用到[[https://docs.github.com/cn/pages][github pages]]进行发布。首先要安装git，然后到github新建一个名为 =username.github.io= 的仓库，其中 =username= 是你自己的github用户名，如我的[[https://cntommy.github.io/docs/][cntommy.github.io]]
-    #+begin_src
-      $ cd ~/notes
-      $ git init   #进行仓库初始化
-      $ git remote add origin https://github.com/<username>/<username>.github.io.git  
-      $ git add . && git commit -m 'init'
-      $ git push origin main
-
-    #+end_src
-    然后配置 =github action= 进行自动化发布
-    #+begin_src
-      $ cd ~/notes
-      $ mkdir -p .github/workflows
-
-    #+end_src
-    打开emacs执行 =C-x C-f ~/notes/.github/workflows/main.yml RET= ，把下面的内容[fn:16]粘贴进去，按 =C-x C-s= 保存
-    #+begin_src
-name: github pages
-
-on:
-  push:
-    branches:
-      - main  # Set a branch to deploy
-  pull_request:
-
-jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          # extended: true
-
-      - name: Build
-        run: hugo --minify
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-
-    #+end_src
-    接下来再执行 =C-x C-f ~/notes/config.toml RET= 调整配置，并保存
-    #+begin_src
-      baseURL = "http://username.github.io/"     # 替换 username 为你自己的用户名
-    #+end_src
-    最后打开github对应仓库的setting，把pages的branch修改为hugo默认的gh-pages
-#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 21:12:58
-[[file:../images/screenshot20221021-211258_.png]]
-    
- 2. 配置主题
-    在网上看到了比较喜欢的[[https://zzo-docs.vercel.app][zdoc]]主题，颜值和实用性都比较高，就是配置起来会稍微麻烦一点，预览图如下所示，接下来开搞！
-#+DOWNLOADED: /tmp/screenshot.png @ 2022-10-21 20:41:30
-[[file:../images/screenshot20221021-204130_.png]]
-首先在需要给当前的仓库添加主题子模块
-#+begin_src
-  $ cd ~/notes
-  $ git submodule add https://github.com/zzossig/hugo-theme-zdoc.git themes/zdoc
-#+end_src
-然后把 =zdoc/exampleSite/= 目录下的四个文件夹拷贝到hugo的项目根目录 =~/notes= 下，再在 =~/notes/content/en/docs/= 目录中添加 =.md= 笔记文件
-然后提交配置文件和笔记
-#+begin_src
-  $ git add .
-  $ git commit -m 'add workflow'
-  $ git push origin master
-#+end_src
-就能通过 =username.github.io= 访问了~
-这块内容主要参考了这几篇文章[fn:17][fn:14]
 - 修改node名字
   修改TITLE，就能更改node名字，如果要解决文件名不一致的问题，再修改文件名[fn:3]
-- 代码块自动生成
-  需要在init文件中加入(require 'org-tempo)
+* 待实现的需求
+- 打开emacs自动同步node
+- 从arxiv自动订阅带关键词的论文
+- ppt制作
+  
+  beamer https://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+
+  https://www.youtube.com/watch?v=vz9aLmxYJB0
+- 笔记模板
+- 跨行显示
+- 订阅要买的东西的价格
+
+
 - backlink
   副窗口怎么常显示
 - 导出pdf
+  中文显示https://emacs-china.org/t/topic/2540/2
+
 - latex mode
 - 公式
+  安装mactex
+  #+begin_src
+    C-c C-x C-l   预览公式
+
+  #+end_src
+  美化 https://emacs-china.org/t/org-mode-latex-mode/22490
+  中文 https://emacs-china.org/t/topic/2540/6
+  实时显示 https://github.com/io12/org-fragtog
+  https://superuser.com/questions/1038612/where-do-i-get-the-pdflatex-program-for-mac
   https://zhuanlan.zhihu.com/p/526795352?utm_id=0
-- 目录树
-  #+begin_src
-;; 目录树
-(package-install 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-  #+end_src
-  #+begin_src
-    U   进入上一级目录
-    g   刷新
-    C-c C-n   创建目录或文件
-    C-c C-d   删除目录或文件
-    C-c C-r   重命名目录或文件
-  #+end_src
-- rss
-  首先安装crul
-  #+begin_src
-    brew install crul
-  #+end_src
-  然后安装elfeed，同时设置rss源[fn:10]
-  #+begin_src
-;; elfeed for rss
-(package-install 'elfeed)
-(setq elfeed-feeds '("http://iccircle.com/feed"))
-
-  #+end_src
-  然后就能用M-x elfeed打开使用，其他的一些命令如下
-  #+begin_src
-    M-x elfeed-add-feed   添加源
-    M-x elfeed-update   更新源
-    M-x elfeed-search-set-filter   修改过滤条件
-
-  #+end_src
-  用的过程中发现了问题，没法更新，原因是很多源都不能用了，下面是一些目前还能用的
-  #+begin_src
-    ("https://www.zhihu.com/rss" zhihu)
-    ;("http://feeds.feedburner.com/zhihu-daily" news)
-    ("https://planet.emacslife.com/atom.xml" emacs)
-    ;("https://www.reddit.com/r/emacs.rss" emacs)
-    ;;("https://www.reddit.com/r/orgmode.rss" emacs)
-    ("https://rsshub.app/rsshub/rss" rss)
-    ("https://rsshub.app/twitter/user/DIYgod" tw)
-
-  #+end_src
-  同时还可添加的一些源
-  #+begin_src
-    Link: https://docs.rsshub.app/new-media.html#wei-xin
-    https://www.kexue.fm/feed
-
-  #+end_src
-  elfeed-org用于管理rss源[fn:11]，但是安装出现了一些问题
-  elfeed-summary用于提供干净的浏览界面
-  #+begin_src
-    M-x elfeed-summary   打开浏览界面
-    R   刷新源
-    U   批量标记为已读
-    M-RET   阅读同时保留未读
-    u   是否只显示未读
-  #+end_src
+  https://github.com/purcell/emacs.d/issues/714
+  https://github.com/io12/org-fragtog
 - 全局搜索
   https://emacs-china.org/t/topic/5618
-- 进度管理
-  为了对不同的项目进度进行概览，准备试一下org-mode的任务管理用法，同时记录一些快捷键，参考了这两篇教程[fn:6] [fn:8]
-  #+begin_src
-    C-c C-t   改变标题任务状态标记   S-LEFT/RIGHT
-    C-c C-w   将当前光标标题及子树移到更高级标题下
-    S-UP/DOWN   改变任务优先级
-    
-
-    [%]   [/]   跟踪当前任务下子任务的情况
-    M-S-<RET>   插入带复选框的同级列表
-    C-c C-c   列表：改变复选框状态/headline：设置标签
-    
-    M-S-<RET>   增加一个子项   C-S-<RET>   在当前子项内容后增加子项
-    C-c /   大纲检索（状态或关键词）
-    C-c <   输入当前日期时间戳
-    C-c >   查看日历   S-LEFT/RIGHT/UP/DOWN   调整日期
-    C-c !   仅输入日期
-    --   定义时间段
-    C-c C-y   计算时间间隔
-    C-c C-s +1d 10am   设定任务计划时间
-    C-c C-d   设定任务deadline
-
-    C-c a t   进入全局TODO列表   t   改变任务状态   <RET>跳到源文件   跳回？
-    C-c a a   进入日程表视图   l   显示日志(完成时间）
-    C-c C-x C-c   打开column view   g   刷新
-    C-c C-c   q   退出column view
-  #+end_src
-  首先修改一下定义任务状态的关键词，在init中添加
-  #+begin_src 
-(setq org-todo-keywords
-  '((sequence "TODO(t)" "ONGOING(o)" "MAYBE(m)" "WAIT(w)" "DELEGATED(d)" "|"
-      "DONE(f)" "CANCELLED(c)" "STUCK(s)")))
-
-  #+end_src
-  然后重启一下emacs就能生效，如果要增加时间戳在关键字后面加！就行，如"TODO(t！)"，如果需要增加切换状态说明，则加@（都加用/分隔）
-  为了方便全局的任务管理，可以根据自己的目录配置全局的清单和快捷键
-  #+begin_src
-;; 配置全局任务文件清单和快捷键
-(setq org-agenda-files (list "~/notes/content-org/"))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-;; 禁用任务组标签继承
-(setq org-tags-exclude-from-inheritance '("TG"))
-  #+end_src
-  接下来修改视图的显示
-  #+begin_src
-;; Skip entries which only have timestamp but no TODO keywords.
-(defun tjh/org-agenda-skip-only-timestamp-entries ()
-  (org-agenda-skip-entry-if 'nottodo 'any))
-
-;; Skip entries which are not deadlines.
- (defun tjh/org-agenda-skip-not-deadline-entries ()
-   (org-agenda-skip-entry-if 'notdeadline))
-
-;; Skip entries which are not finished.
- (defun tjh/org-agenda-skip-unfinished-entries ()
-   (org-agenda-skip-entry-if 'nottodo '("DONE")))
-
-;; Skip unscheduled entries.
- (defun tjh/org-agenda-skip-scheduled-entries ()
-   (org-agenda-skip-entry-if 'timestamp
-                 'todo '("ONGOING" "WAIT" "DELEGATED")
-                 'regexp ":TG:"))
-
-(setq org-agenda-custom-commands
-      '(
-	   ;; Display general agenda for each project.
-        ("A" . "Default agenda view")
-        ("Aa" "Agenda for all projects"
-         agenda ""
-         ((org-agenda-skip-function 'tjh/org-agenda-skip-only-timestamp-entries)
-          (org-agenda-overriding-header "Agenda for all projects: "))
-         "~/notes/content-org/org-html-exports/Agenda-All.html")
-
-         ;; Display all tasks with deadline.
-         ("D" . "Agenda view for deadlines")
-         ("Da" "Agenda view for all deadlines"
-          agenda ""
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-not-deadline-entries)
-           (org-agenda-overriding-header "All deadlines: "))
-         "~/notes/content-org/org-html-exports/Deadline-All.html")
-
-         ;; Display all finished tasks.
-         ("F" . "Agenda view for finished tasks")
-         ("Fa" "Agenda view for all finished tasks"
-          agenda ""
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-unfinished-entries)
-           (org-agenda-overriding-header "All finished tasks: "))
-          "~/notes/content-org/org-html-exports/Done-All.html")      
-
-         ;; Inbox for displaying unscheduled tasks.
-         ("I" . "Inbox")
-         ("Ia" "Inbox for all unfinished TODOs"
-          alltodo ""
-          ((org-agenda-skip-function 'tjh/org-agenda-skip-scheduled-entries)
-           (org-agenda-overriding-header "Inbox items: "))
-          "~/notes/content-org/org-html-exports/Inbox-All.html")
-        ))
-
-  #+end_src
-  更多column view的命令可以参考[fn:7]
   
 * Footnotes
-
-
-
-
-
+[fn:20]https://orgmode.org/manual/Exporting-Code-Blocks.html 
+[fn:19]http://blog.lujun9972.win/blog/2016/12/10/emacs文件管理神器--dired常用操作说明/ 
+[fn:18]http://holbrook.github.io/2012/04/12/emacs_orgmode_editor.html 
 [fn:17]http://holbrook.github.io/2012/04/12/emacs_orgmode_editor.html 
 [fn:16]https://gohugo.io/hosting-and-deployment/hosting-on-github/ 
 [fn:15]https://ox-hugo.scripter.co/doc/hugo-section/ 
@@ -794,6 +864,7 @@ rss https://docs.rsshub.app/
 emacs笔记https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-19-my_emacs_and_lisp_wiki.html#orgcb79882
 purcell's config https://github.com/purcell/emacs.d
 master emacs one year https://github.com/redguardtoo/mastering-emacs-in-one-year-guide
+多媒体软件https://github.com/emacs-eaf/emacs-application-framework
 * COMMENT Local Variables                          :ARCHIVE:
 # Local Variables:
 # eval: (org-hugo-auto-export-mode)

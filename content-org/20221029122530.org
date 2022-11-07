@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       5F29C1CF-BD7B-42E0-9AD9-0BB5F79E81EB
+:END:
+#+TITLE: 指定GPU训练
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-29 六 12:25]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+
+=os.environ['CUDA_VISIBLE_DEVICES']=‘0,1’=
+需要放在
+=import torch=
+之前

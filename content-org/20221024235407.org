@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       705CAC43-34FC-42DC-8021-7A27CD90DFB5
+:END:
+#+TITLE: hugo启动报错
+#+AUTHOR: Jun Gao
+#+DATE: [2022-10-24 一 23:54]
+#+HUGO_BASE_DIR: ~/notes
+#+HUGO_SECTION: ch/docs
+问题：
+在终端中执行 =hugo server -D --disableFastRender --navigateToChanged= 时报错
+#+begin_src 
+Start building sites …
+hugo v0.104.3+extended darwin/amd64 BuildDate=unknown
+WARN 2022/10/24 23:41:54 The "twitter_simple" shortcode will soon require two named parameters: user and id. See "/Users/gaolegao/notes/content/ch/blog/rich-content.md:36:1"
+Error: Error building site: "/Users/gaolegao/notes/content/ch/blog/rich-content.md:1:1": timed out initializing value. You may have a circular loop in a shortcode, or your site may have resources that take longer to build than the `timeout` limit in your Hugo config file.
+Built in 10463 ms
+
+#+end_src
+
+解决办法：
+1. 删除rich-content.md
+* Footnotes
+* COMMENT Local Variables                          :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

@@ -1,3 +1,12 @@
+;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;;(require 'init-benchmarking) ;; Measure startup time
+(setq debug-on-error t)
+
+;;(package-install 'pip-requirements)
+;;(require 'init-python)
+
 ;;设置代理
 ;;(setq url-proxy-services '(("http" . "http://127.0.0.1:1087")))
 ;;(setq url-proxy-services '(("https" . "http://127.0.0.1:1087")))
@@ -543,3 +552,52 @@
   (which-key-show-early-on-C-h t)
   :init
   (which-key-mode))
+
+;; 思维导图
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/plantuml-emacs"))
+(require 'plantuml)
+(setq plantuml-jar-path "~/.emacs.d/lisp/plantuml.jar"
+      plantuml-output-type "svg"
+      plantuml-relative-path "./images/"
+      plantuml-theme "plain"
+      plantuml-font "somefont"
+      plantuml-add-index-number t
+      plantuml-log-command t
+      plantuml-mindmap-contains-org-content t
+      plantuml-org-headline-bold t)
+
+(setq desktop-save t)
+;; Restore desktop, should be worked in daemon too.
+(defun +restore-desktop()
+  (let ((inhibit-message t))
+    (run-at-time 1 nil
+                 (lambda()
+                   (desktop-read)
+                   (desktop-save-mode 1)))))
+(add-hook 'emacs-startup-hook
+              (lambda()
+                (if (daemonp)
+                    (add-hook 'server-after-make-frame-hook '+restore-desktop)
+                  (+restore-desktop))))
+
+;;backlink buffer
+;; for org-roam-buffer-toggle
+;; Recommendation in the official manual
+(add-to-list 'display-buffer-alist
+               '("\\*org-roam\\*"
+                  (display-buffer-in-direction)
+                  (direction . right)
+                  (window-width . 0.33)
+                  (window-height . fit-window-to-buffer)))
+;; ;; for org-roam-buffer-toggle
+;; ;; Use side-window like V1
+;; ;; This can take advantage of slots available with it
+;; (add-to-list 'display-buffer-alist
+;;     '("\\*org-roam\\*"
+;;         (display-buffer-in-side-window)
+;;         (side . right)
+;;         (slot . 0)
+;;         (window-width . 0.25)
+;;         (preserve-size . (t . nil))
+;;         (window-parameters . ((no-other-window . t)
+;;                               (no-delete-other-windows . t)))))
