@@ -801,7 +801,7 @@ u   取消git add
 c   commit
 P   push
 g   刷新
-</code></pre><p>git rm 操作</p><h3 id=设置代理开关>设置代理开关<sup id=fnref:22><a href=#fn:22 class=footnote-ref role=doc-noteref>22</a></sup></h3><h2 id=其他优化>其他优化</h2><ul><li>cpu占用高<br>偶然有一次发现cpu占用很高，但是最后查不出是什么原因，下面的方法是修改历史缓存，暂时还用不到<pre tabindex=0><code class=language-nil data-lang=nil>(setq history-length 100)
+</code></pre><p>git rm 操作</p><h3 id=设置代理开关>设置代理开关<sup id=fnref:22><a href=#fn:22 class=footnote-ref role=doc-noteref>22</a></sup></h3><p>setenv</p><h2 id=其他优化>其他优化</h2><ul><li>cpu占用高<br>偶然有一次发现cpu占用很高，但是最后查不出是什么原因，下面的方法是修改历史缓存，暂时还用不到<pre tabindex=0><code class=language-nil data-lang=nil>(setq history-length 100)
 (put &#39;minibuffer-history &#39;history-length 50)
 (put &#39;evil-ex-history &#39;history-length 50)
 (put &#39;kill-ring &#39;history-length 25)
