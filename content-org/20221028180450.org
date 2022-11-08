@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       D1B5C880-FF55-4A3B-A034-92B4862FCDC9
-:END:
-#+TITLE: self-supervised learning 自监督学习
-#+AUTHOR: Jun Gao
-#+DATE: [2022-10-28 五 18:04]
-#+HUGO_BASE_DIR: ~/notes
-#+HUGO_SECTION: ch/docs
-在nlp中可以理解为多维度的标签？
